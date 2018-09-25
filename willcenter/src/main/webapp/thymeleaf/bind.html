@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户中心-映目</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="/js/lib/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="/js/login.js"></script>
+    <!-- <script type="text/javascript" src="/js/bind.js"></script> -->
+    <script type="text/javascript" src="//at.alicdn.com/t/font_454996_76h76zpnfo7mbo6r.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="content">
+    <div class="headLoge">
+        <img src="/img/new-logo.png" alt="logo">
+    </div>
+
+    <div class="banner">会议站</div>
+
+    <div class="container" style="display: none;">
+        <div class="containerWrapper" id="containerWrapper_bind">
+
+            <!--错误提醒-->
+            <div id="errorMsg">
+                <span class="error"></span>
+            </div>
+
+            <div id="bindIcon">
+                <div class="icon1">
+                        <svg aria-hidden="true">
+                            <use xlink:href="#icon-yingmu"></use>
+                        </svg>
+                </div>
+                <div class="icon2">
+                        <svg aria-hidden="true">
+                            <use xlink:href="#icon-xianghujiaohuan"></use>
+                        </svg>
+                </div>
+                <div class="icon3">
+                        <svg aria-hidden="true">
+                            <use xlink:href="#icon-weixin1"></use>
+                        </svg>
+                </div>
+            </div>
+
+            <div id="text">
+                <p>第一次使用微信登录，您需要填写账号和密码完成注册</p>
+                <p>如果您已有映目账号，可直接进行账号绑定</p>
+            </div>
+
+            <!--微信登录-->
+            <div class="routerView weixin">
+                <div class="inputContent">
+                    <form id="bindForm">
+                        <!-- 手机号输入框 -->
+                        <div class="inputItem userInput" id="bindPhone">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-shoujitianchong"></use>
+                            </svg>
+                            <input id="phone" class="phone" name="phone" type="text" placeholder="手机号">
+                        </div>
+                        <p class="reg-remind-text" id="registerPhoneWarning_bind"></p>                        
+                        <!-- 验证码 -->
+                        <div class="inputItem verCode">
+                            <div class="userInput" id="bindCode">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-yanzhengma"></use>
+                                </svg>
+                                <input class="smsCode" id="code" name="code" value="" type="text" placeholder="验证码">
+                            </div>
+                            <button id="registerMessageCodeBtn_bind" class="messageCodeBtn" onclick="sendMessage('#bindForm', '.phone', '.messageCodeBtn');return false;">
+                                发送验证码
+                            </button>
+                        </div>
+                        <p class="reg-remind-text" id="bindCodeWarning"></p>
+                        <!-- 密码输入框 -->
+                        <div class="inputItem userInput reg-pwd" id="bindPassword">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-mima"></use>
+                            </svg>
+                            <input class="password" name="password" type="password" placeholder="密码">
+                        </div>
+                        <p class="reg-remind-text" id="registerPasswordWarning"></p>
+                        <!--隐藏表单域-->
+                        <input type="hidden" id="isRemember" name="isRemember">
+                        <!-- <input class="service" type="hidden" id="service" name="service" th:value="${service}" /> -->
+                        <input class="unionId" type="hidden" id="unionId" name="unionId" th:value="${unionId}" />
+                        <input class="nickname" type="hidden" id="nickname" name="nickname" th:value="${nickname}" />
+                        <input class="avatar" type="hidden" id="avatar" name="avatar" th:value="${avatar}" />
+                    </form>
+                </div>
+                <div class="common-error">
+                    <span class="common-error-text" id="bind-error"></span>
+                </div>
+                <!-- line - yingxiang -->
+                <!--<div class="lineItem lineYX">-->
+                    <!--<div class="line"></div>-->
+                    <!--<a onclick="showDialog()" href="#" class="text">《映目活动服务条款》</a>-->
+                    <!--<div class="line"></div>-->
+                <!--</div>-->
+                <!-- 主按钮 -->
+                <button class="loginBtn" onclick="goBind();return false;">确定</button>
+            </div>
+
+        </div>
+
+
+        <div class="containerFooter">
+            <p class="copyRight">Copyright &copy; 2013-2018 版权所有 北京韦尔科技有限公司 京ICP备14040981号-2</p>
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+<script type="text/javascript" src='/js/dist/main.js'></script>
+</html>
