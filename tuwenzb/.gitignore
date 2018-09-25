@@ -1,0 +1,9 @@
+*.class
+*.md
+target
+.settings
+.git
+.project
+.idea
+*.iml
+/bin/
