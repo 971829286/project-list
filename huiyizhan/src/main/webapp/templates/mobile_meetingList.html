@@ -1,0 +1,51 @@
+<!--# include file="/inc/header.html" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/mobile_inc/header::header" ></head>
+<div th:include="/mobile_inc/headbody::headbody" ></div>
+<main data-page="activity-mobile" class="activity-mobile">
+    <div class="mainContainer">
+        <div class="selectNav border-1px-b">
+            <div class="selectNavBox">
+                <div class="selectItem" id="selectCategoryBtn">
+                    <span id="">所有类别</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-xia1"></use>
+                    </svg>
+                </div>
+                <div class="selectItem" id="selectTimeBtn">
+                    <span>全部时间</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-xia1"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="selectBox animated slideOutUp" id="selectCategoryHook">
+                <ul id="mobileCategoryUl">
+
+                </ul>
+            </div>
+            <div class="selectBox animated slideOutUp" id="selectTimeHook">
+                <ul id="mobileTimeUl">
+                  <li class="selectLi" data-i="0">今天</li>
+                  <li class="selectLi" data-i="1">明天</li>
+                  <li class="selectLi" data-i="3">未来三天</li>
+                  <li class="selectLi" data-i="7">未来一周</li>
+                  <li class="selectLi action" data-i=null>全部时间</li>
+                </ul>
+            </div>
+        </div>
+        <div class="selectMask" id="selectMask"></div>
+        <div class="activityListView activityListView-hook">
+            <ul id="activityListUl">
+
+
+            </ul>
+        </div>
+        <!--<div class="bottom">-->
+            <!--已经到底啦~-->
+        <!--</div>-->
+    </div>
+</main>
+<div th:include="/mobile_inc/footer::html" ></div>
+</html>
+<!--# include file="/inc/footer.html" -->

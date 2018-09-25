@@ -1,0 +1,92 @@
+*{
+    padding:0;
+    margin:0;
+ }
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+input::-moz-placeholder {
+    color: #999;
+}
+input::-ms-input-placeholder {
+    color: #999;
+}
+
+
+textarea::-webkit-input-placeholder {
+    color: #999;
+}
+textarea::-moz-placeholder {
+    color: #999;
+}
+textarea::-ms-input-placeholder {
+    color: #999;
+}
+
+
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+   box-sizing: content-box;
+}
+
+.btn.hy-btn{
+	color: #fff;
+	background-color: #45a9ff;
+
+}
+.btn.hy-btn:hover{
+	color: #fff;
+	background-color: #1485e6;
+}
+.btn.create-btn{
+    color: #fff;
+    background-color: #39c2aa;
+
+}
+.btn.create-btn:hover{
+    color: #fff;
+    background-color: #259581;
+}
+
+.btn.login-btn{
+    background-color:#fff;
+    border-color:#45a9ff;
+    color:#45a9ff;
+}
+.btn.login-btn:hover{
+    background-color:#45a9ff;
+    border-color:#45a9ff;
+    color:#fff;
+}
+
+.btn.group-create-btn{
+    color: #fff;
+    background-color: #76d39c;
+
+}
+.btn.group-create-btn:hover{
+    color: #fff;
+    background-color: #60b482;
+}
+.btn.buy-btn{
+    color: #fff;
+    background-color: #738dfe;
+
+}
+.btn.buy-btn:hover{
+    color: #fff;
+    background-color: #5970d1;
+}
+.btn.contact-btn{
+    color: #fff;
+    background-color: #f8b167;
+
+}
+.btn.contact-btn:hover{
+    color: #fff;
+    background-color: #d59859;
+}

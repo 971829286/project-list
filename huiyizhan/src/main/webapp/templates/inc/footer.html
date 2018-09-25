@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div class="footer">
+	<div class="inner">
+		<div class="f-top">
+			<div class="f-hotline">
+				<h5>免费热线</h5>
+				<span class="tel">400-616-1905</span>
+				<div class="tel-label">
+					<svg class="icon" aria-hidden="true" style='font-size: 20px;margin-right: 10px;'>
+						<use xlink:href="#icon-rexiandianhua"></use>
+					</svg>
+					7x24h免费服务热线
+				</div>
+			</div>
+			<div class="f-nav">
+				<div class='title'>
+					<span>网站导航</span>
+				</div>
+				<ul class="nav-list">
+					<a href="/"><li>网站首页</li></a>
+					<a href="/service"><li>产品服务</li></a>
+					<a href="/meetingList"><li>活动列表</li></a>
+					<a href="/price"><li>产品价格</li></a>
+					<a href="/news.html" th:href="@{${registerUrl}(service=${#httpServletRequest.requestURL})}"><li>注册页面</li></a>
+					<a href="/contact.html" th:href="@{${loginUrl}(service=${#httpServletRequest.requestURL})}" th:if="${loginUser==null}" ><li>登录页面</li></a>
+
+
+				</ul>
+			</div>
+			<div class="concat-us">
+				<div class='title'>
+					<span>联系我们</span>
+				</div>
+				<div class="content">
+					<ul class="other">
+						<li>
+							<svg class="icon" aria-hidden="true">
+								<use xlink:href="#icon-youxiang"></use>
+							</svg>
+							<span>ourwill@ourwill.cn</span>
+						</li>
+						<li>
+							<svg class="icon" aria-hidden="true">
+								<use xlink:href="#icon-Telephone"></use>
+							</svg>
+							<span>010-60609868</span>
+						</li>
+						<li>
+							<svg class="icon" aria-hidden="true" >
+								<use xlink:href="#icon-dizhi"></use>
+							</svg>
+							<span>北京市海淀区上地信息路7号弘源首著1号楼2001</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="f-QRcode">
+				<img src="../pc_static/images/qrcode.jpg"/>
+				<h6>图文直播公众号</h6>
+			</div>
+		</div>
+		<div class="f-bot">
+			Copyright © 2013-2018 版权所有 北京韦尔科技有限公司 京ICP备14040981号-2
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../pc_static/js/lib.min.js"></script>
+<script type="text/javascript" src="../pc_static/js/main.js"></script>
+<script type="text/javascript" src="//at.alicdn.com/t/font_454996_sfyx9o0tbbne9udi.js"></script>
+</html>

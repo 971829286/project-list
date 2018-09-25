@@ -1,0 +1,73 @@
+#homePage{
+  .swiper-container {
+      width: 100%;
+      min-width: 1180px;
+      height: 28vw;
+      min-height: 350px;
+      img {
+          width: 100%;
+          height: 100%;
+      }
+      .swiper-pagination-bullet:hover,
+      .swiper-pagination-bullet-active {
+          background-color: #fff;
+      }
+      .swiper-slide {
+          cursor: pointer;
+          
+      }
+      .swiper-button-white {
+          opacity: .3;
+          &:hover {
+              opacity: .8;
+          }
+      }
+  }
+  .pagination{
+    margin: 0 auto;
+  }
+  .service-register{
+    width:100%;
+    height: 138px;
+    background-image: url('../images/register_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position:relative;
+    div{
+      // text-align:center;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      // line-height: 138px;
+      span{
+        margin-right:40px;
+        font-size: 24px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+      .register_btn{
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+        background-color: rgba(0,0,0,0);
+        color: #ffffff;
+        border: solid 1px #ffffff;
+        box-sizing: border-box;
+        transition:all .3s ease;
+        text-align: center;
+        line-height: 40px;
+        &:hover{
+          font-weight:500;
+          color: #0091ff;
+          background-color: rgba(255,255,255,1);
+          border: solid 1px #ffffff;
+        }
+      }
+    }
+  }
+  .activity-detail{
+    display: inline-block;
+    margin-right:3px;
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div th:fragment="headbody">
+	<div class="inner">
+		<div class="logo pull-left"><a href="/"><img src="/pc_static/images/ymhd_logo.png"/></a></div>
+		<ul class="nav nav-pills pull-left">
+			<li class="home"><a href="/">首页</a></li>
+			<li class="service"><a href="/service">服务</a></li>
+			<li class="meetingList"><a href="/meetingList">活动</a></li>
+			<li class="price"><a href="/price">价格</a></li>
+		</ul>
+		<div class="tool pull-right">
+			<div class="hy-search-wrap pull-left">
+				<svg class="icon" aria-hidden="true" id="headerSearch">
+					<use xlink:href="#icon-Seach"></use>
+				</svg>
+				<div class="input-group">
+					<input id="headerInput" type="text" class="form-control hy-search" aria-describedby="basic-addon2" />
+				</div>
+			</div>
+			<div class="create pull-left">
+				<a  th:href="@{${loginUrl}(service=${#httpServletRequest.requestURL})}" th:if="${loginUser == null}">
+					登录
+				</a>
+				<a  th:href="@{${registerUrl}(service=${#httpServletRequest.requestURL})}" th:if="${loginUser == null}">
+					注册
+				</a>
+				<a href="/web/create" th:if="${loginUser!= null}">
+					<button class="btn hy-btn" style="width: 110px;">创建活动</button>
+				</a>
+			</div>
+			<div class="personal pull-left" th:if="${loginUser != null}">
+				<span class="person-pic">
+					<img class="pic-img" src="./static/images/user.jpg" th:src="${loginUser.avatarUrl}" />
+					<div class="dropdown-menu">
+						<!--<div class="version-type company">企业版</div>-->
+						<div class="version-type free">免费版</div>
+						<div class="user-info">
+							<div class="info-left">
+								<div class="user-name" th:text="${loginUser.nickname}" th:if="${loginUser.nickname != null and loginUser.nickname != ''}"></div>
+								<div class="user-name" th:text="${loginUser.username}" th:if="${loginUser.nickname == null or loginUser.nickname == ''}"></div>
+								<div class="user-email" th:text="${loginUser.email}" th:if="${loginUser.email != null and loginUser.email != ''}"></div>
+								<div class="user-email" th:if="${loginUser.email == null or loginUser.email == ''}">未绑定邮箱</div>
+							</div>
+							<!-- <div class="info-right">
+								<a href="">
+									<svg class="self-icon icon" aria-hidden="true">
+										<use xlink:href="#icon-you2"></use>
+									</svg>
+								</a>
+							</div> -->
+						</div>
+							<!-- <div class="session-count">
+								<span class="count">企业版场数：1场</span>
+								<a class="buy" href="/price">购买</a>
+							</div> -->
+						<div class="handle-item">
+							<div class="item-self">
+								<a href="/web/usercenter/activity" th:href="|/web/usercenter/activity/${loginUser.id}|">
+									<svg class="self-icon icon" aria-hidden="true">
+										<use xlink:href="#icon-wodehuiyi"></use>
+									</svg>
+									<span class="self-name">我的活动</span>
+								</a>
+							</div>
+							<div class="item-self">
+								<a href="/web/usercenter/partake" th:href="|/web/usercenter/partake/${loginUser.id}|">
+									<svg class="self-icon icon" aria-hidden="true">
+										<use xlink:href="#icon-wodemenpiao"></use>
+									</svg>
+									<span class="self-name">我的门票</span>
+								</a>
+							</div>
+							<div class="item-self">
+								<a href="/manage">
+									<svg class="self-icon icon" aria-hidden="true">
+										<use xlink:href="#icon-guanlihoutai"></use>
+									</svg>
+									<span class="self-name">管理后台</span>
+								</a>
+							</div>
+							<div class="item-self">
+								<a href="/logout">
+									<svg class="self-icon icon" aria-hidden="true">
+										<use xlink:href="#icon-tuichudenglu"></use>
+									</svg>
+									<span class="self-name">退出登录</span>
+								</a>
+							</div>
+						</div>
+				    </div>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

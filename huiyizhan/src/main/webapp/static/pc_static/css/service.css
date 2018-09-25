@@ -1,0 +1,160 @@
+#servicePage .service-banner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 1180px;
+  height: 33vw;
+  min-height: 400px;
+  background-image: url('../images/event_banerbg.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+#servicePage .service-banner .text_wrap {
+  width: 40%;
+  padding-left: 20px;
+}
+#servicePage .service-banner .text_wrap .title {
+  font-size: 36px;
+  padding-bottom: 40px;
+}
+#servicePage .service-banner .text_wrap p {
+  width: 335px;
+  font-size: 14px;
+}
+#servicePage .service-banner .text_wrap .btn {
+  padding: 0 30px;
+  margin-top: 36px;
+  border-radius: 25px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #2c7dfa;
+  font-size: 16px;
+}
+#servicePage .service-container {
+  width: 100%;
+}
+#servicePage .service-container .contain-header {
+  width: 100%;
+  height: 26vw;
+  min-height: 350px;
+}
+#servicePage .service-container .contain-header .sevInner {
+  width: 1180px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: hidden;
+}
+#servicePage .service-container .contain-header .sevInner li {
+  width: 340px;
+  height: 100%;
+  float: left;
+  list-style-type: none;
+  margin-right: 80px;
+}
+#servicePage .service-container .contain-header .sevInner li .item-pic-position {
+  width: 100%;
+  height: 40%;
+  position: relative;
+}
+#servicePage .service-container .contain-header .sevInner li .item-pic-position .item-icon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+}
+#servicePage .service-container .contain-header .sevInner li .item-heading {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
+#servicePage .service-container .contain-header .sevInner li .item-contain {
+  font-size: 16px;
+  color: #808080;
+  line-height: 28px;
+  text-align: center;
+}
+#servicePage .service-container .contain-header .sevInner li:last-child {
+  margin: 0;
+}
+#servicePage .service-container .contain-section,
+#servicePage .service-container .gray-section {
+  width: 100%;
+  min-width: 1180px;
+  height: 650px;
+}
+#servicePage .service-container .contain-section .static_check,
+#servicePage .service-container .gray-section .static_check {
+  display: flex;
+  display: -webkit-flex;
+  padding: 15px 30px;
+  border-radius: 6px;
+  border: 1px solid #1191ff;
+  margin-top: 20px;
+}
+#servicePage .service-container .contain-section .static_check p,
+#servicePage .service-container .gray-section .static_check p {
+  margin: 0;
+}
+#servicePage .service-container .contain-section .static_check .icon,
+#servicePage .service-container .gray-section .static_check .icon {
+  margin: 5px 15px 0 0;
+}
+#servicePage .service-container .contain-section .forward-box,
+#servicePage .service-container .gray-section .forward-box {
+  width: 100%;
+  height: 20px;
+}
+#servicePage .service-container .gray-section {
+  background-color: #f9f9f9;
+}
+#servicePage .service-container .gray-section .section-container {
+  padding-right: 75px;
+  padding-left: 0;
+  flex-direction: row-reverse;
+}
+#servicePage .service-container .section-container {
+  margin: 0 auto;
+  height: 100%;
+  padding-left: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1180px;
+}
+#servicePage .service-container .section-container .section-pic {
+  border-radius: 4px;
+}
+#servicePage .service-container .section-container .section-pic .icon {
+  font-size: 400px;
+}
+#servicePage .service-container .section-container .section-pic img {
+  display: block;
+  border-radius: 4px;
+  width: 650px;
+  height: 400px;
+}
+#servicePage .service-container .section-container .section-title {
+  width: 500px;
+}
+#servicePage .service-container .section-container .section-title .section-title-pic {
+  width: 60px;
+  height: 60px;
+  background: #1191ff;
+}
+#servicePage .service-container .section-container .section-title .section-title-heading {
+  font-size: 26px;
+  color: #1191ff;
+  margin: 40px 0;
+}
+#servicePage .service-container .section-container .section-title .section-title-contain {
+  font-size: 16px;
+  color: #808080;
+  line-height: 26px;
+}

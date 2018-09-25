@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--# include file="/inc/header.html" -->
+<head th:include="/inc/header::head" ></head>
+<div class="header" th:include="/inc/headbody::html" ></div>
+<div data-page='meetingList' id="meetingList">
+	<div class="meeting-search-bar">
+		<div class="search-bar-contain">
+			  <div class="col-lg-12">
+                <form id = "searchForm"><!--start of searchForm-->
+                  <div class="input-group">
+                    <div class="input-group-btn">
+                      <a type="button" class="btn btn-default dropdown-toggle select-btn" data-toggle="dropdown"><span id="searchField">活动</span> <span class="caret"></span></a>
+                      <ul class="dropdown-menu" style="width: 80px;margin: 0" id="searchUl">
+                        <li><a href="#" >活动</a></li>
+                        <!-- <li disabled="disabled"><a href="#"  >主办方</a></li> -->
+                      </ul>
+                    </div><!-- /btn-group -->
+                    <input id="searchVal" type="text" class="form-control" aria-label="..." placeholder="请输入您要搜索的内容"/>
+                    <span class="input-group-btn">
+                      <button class="btn hy-btn" type="button"  id="searchButton">搜索</button>
+                    </span>
+                  </div><!-- /input-group -->
+                </form><!--end of searchForm-->
+			  </div><!-- /.col-lg-6 -->
+		</div>
+	</div>
+	<div class="container inner">
+    <div class="meeting-list-header">
+    	<span class="meeting-list-title">活动列表</span>
+    	<div class="meeting-choice-btn">
+    		<div class="btn-group">
+				  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    <span id="categoryVal">所有活动</span> <span class="caret"></span>
+				  </button>
+				  <ul id="categoryUl" class="dropdown-menu" style="width: 100%">
+				    <!-- <li><a href="#">Something else here</a></li>
+				    <li role="separator" class="divider"></li>
+				    <li><a href="#">Separated link</a></li> -->
+				  </ul>
+				</div>
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    <span id="timeVal">全部时间</span>  <span class="caret"></span>
+				  </button>
+				  <ul id="timeUl" class="dropdown-menu"  style="width: 100%">
+				    <li><a  href="#">今天</a></li>
+				    <li><a  href="#">明天</a></li>
+				    <li><a  href="#">未来三天</a></li>
+				    <li><a  href="#">未来一周</a></li>
+				    <li><a  href="#">全部时间</a></li>
+				  </ul>
+				</div>
+    	</div>
+    </div>
+    <ul class="activity-list clearfix" id="listContainer">
+      
+    </ul>
+    <nav aria-label="Page navigation" class="nav-navigation">
+      <ul class="pagination" id="paginationUl">
+        <!-- <li >
+          <a href="#" aria-label="Previous" data-num="1" class="pageButton preButton">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        <li id="pagination">
+          <a href="#" aria-label="Next" data-num="1" class="pageButton nextButton">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li> -->
+      </ul>
+    </nav>
+  </div>
+</div>
+<!--# include file="/inc/footer.html" -->
+<div th:include="/inc/footer::html" ></div>
+</html>

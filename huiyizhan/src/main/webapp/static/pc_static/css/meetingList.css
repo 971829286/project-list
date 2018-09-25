@@ -1,0 +1,104 @@
+#meetingList .meeting-search-bar {
+  width: 100%;
+  min-width: 1180px;
+  height: 14vw;
+  min-height: 200px;
+  background-color: #dde4ff;
+}
+#meetingList .meeting-search-bar .search-bar-contain {
+  width: 500px;
+  height: 100%;
+  padding-top: 90px;
+  margin: 0 auto;
+}
+#meetingList .meeting-search-bar .search-bar-contain .dropdown-menu {
+  min-width: unset;
+}
+#meetingList .meeting-search-bar .search-bar-contain .dropdown-menu > li > a {
+  padding: 3px 12px;
+}
+#meetingList .meeting-search-bar .search-bar-contain .select-btn {
+  width: 80px;
+}
+#meetingList .meeting-list-header {
+  width: 1180px;
+  height: 46px;
+  border-bottom: 1px solid #ddd;
+  margin: 30px 0;
+}
+#meetingList .meeting-list-header .meeting-list-title {
+  font-size: 22px;
+  color: #333;
+}
+#meetingList .meeting-list-header .meeting-choice-btn {
+  width: 200px;
+  height: 100%;
+  float: right;
+}
+#meetingList .meeting-list-header .meeting-choice-btn .btn-xs {
+  padding: 1px 16px;
+}
+#meetingList .meeting-list-header .meeting-choice-btn .dropdown-toggle {
+  display: inline-block;
+  width: 95px;
+  min-width: 95px!important;
+}
+#meetingList .meeting-list-header .meeting-choice-btn .dropdown-menu {
+  min-width: unset;
+  margin: 0;
+  width: 95px;
+  min-width: 95px!important;
+}
+#meetingList .meeting-list-header .meeting-choice-btn .dropdown-menu > li > a {
+  padding: 3px 12px;
+}
+#meetingList nav.nav-navigation {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+}
+#meetingList nav.nav-navigation ul#paginationUl {
+  padding-bottom: 25px;
+  width: 80%;
+  margin: 0 auto;
+}
+#meetingList nav.nav-navigation ul#paginationUl .active {
+  color: #157efb;
+}
+#meetingList nav.nav-navigation ul#paginationUl a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  color: #999999;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 28px;
+}
+#meetingList nav.nav-navigation ul#paginationUl a:hover {
+  color: #000;
+}
+#meetingList nav.nav-navigation ul#paginationUl span {
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 28px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  color: #999999;
+  cursor: pointer;
+}
+#meetingList nav.nav-navigation ul#paginationUl span:hover {
+  color: #000;
+}
+#meetingList .activity-detail svg {
+  display: inline-block;
+  margin-right: 3px;
+}

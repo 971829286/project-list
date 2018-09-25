@@ -1,0 +1,71 @@
+@innerWidth: 1180px;
+@twzb: #fe8100;
+.clearfix() {
+	*zoom: 1; // for ie6 ie7
+	&:before,
+	&:after {
+		content: " "; // 1
+		display: table; // 2
+	}
+	&:after {
+		clear: both;
+	}
+}
+.center-block() {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.opacity(@opacity) {
+	opacity: @opacity;
+	@opacity-ie: (@opacity * 100);
+	filter: ~"alpha(opacity=@{opacity-ie})";
+}
+.text-overflow(@width:0px) {
+	width:@width;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.placeholder(@color) {
+	&:-webkit-input-placeholder {
+		color: @color; // Chrome, Safari, Opera
+		opacity: 1;
+	}
+	&:-moz-placeholder {
+		color: @color; // Firefox 19+
+		opacity: 1;
+	}
+	&:-ms-input-placeholder {
+		color: @color; // IE 10+
+		opacity: 1;
+	}
+}
+
+.size(@width:auto,@height:@width) {
+	width: @width;
+	height: @height;
+}
+
+.inline-block(){
+	display:inline-block;
+	*display:inline; // ie6 ie7
+	*zoom:1;
+}
+.banner-bg(@imgName){
+	@imgUrl:"../images/";
+	width:100%;
+	height:200px;
+	background-image:url('@{imgUrl}@{imgName}');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:auto 100%;
+}
+@mainColorOrange:#fe8100;
+@mainColorRed:#ff4d4d;
+@mainColorGreen:#1abb9c;
+@mainColorLightBlue:#5eb6f0;
+@mainColorBlue:#2a84ff;
+
+@pageColorBorder:#d9d9d9;
+@pageColorFont:#157efb;

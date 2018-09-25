@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--# include file="/inc/header.html" -->
+<head th:include="/inc/header::header" ></head>
+<script src="" th:src="${checkLogin}" th:if="${checkLogin!=null}"></script>
+<div class="header" th:include="/inc/headbody::headbody" ></div>
+<div data-page='home' id="homePage">
+  <div class="swiper-container" id="bannerSlider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" th:each="banner:${bannerHomes}" th:if="${!#lists.isEmpty(bannerHomes)}">
+        <a th:href="${banner.link}">
+        <img src="./pc_static/images/banner_1.jpg" alt="图片" th:src="${banner.picUrl}" th:alt="${banner.title}"/>
+        </a>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+            <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+  </div>
+  <div class="container inner">
+    <h2 class="column-title">热门推荐<small>/ WHAT'S HOT</small></h2>
+    <ul class="activity-list clearfix">
+      <li class="activity-media" th:each="activity : ${activityHotList}" th:if="${!#lists.isEmpty(activityHotList)}">
+        <a href="" th:href="|/web/activity/${activity.id}|" th:if="${activity!=null}" target="_blank">
+          <div class="activity-banner">
+            <img src="http://cdn.ourwill.cn/huiyi/production/static/media/bannerbg.89127eba.jpg" th:src="${activity.activityBannerMobileUrl}" th:if="${activity.activityBannerMobileUrl!=null}"/>
+            <img src="http://cdn.ourwill.cn/huiyi/production/static/media/bannerbg.89127eba.jpg" th:if="${activity.activityBannerMobileUrl==null}"/>
+          </div>
+          <div class="activity-info">
+            <div class="activity-title"><span th:text="${activity.activityTitle}"/></div>
+            <div class="activity-date"><span th:text="${#dates.format(activity.startTime, 'yyyy.MM.dd')} +' - '+ ${#dates.format(activity.endTime, 'yyyy.MM.dd')}"/></div>
+            <div class="activity-detail">
+              <span class="look"  data-toggle="tooltip" data-placement="top" title="参与人数">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-guankan"></use>
+                </svg>
+                <span th:text="${activity?.activityStatistics?.watchCount}">223</span>
+                <!--<span>223</span>-->
+              </span>
+              <span class="star" data-toggle="tooltip" data-placement="top" title="收藏数">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-shoucang"></use>
+                </svg>
+                <span th:text="${activity?.activityStatistics?.collectCount}">1156</span>
+                <!--<span>223</span>-->
+              </span>
+              <!-- <span class="comment"  data-toggle="tooltip" data-placement="top" title="回复">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-pinglun"></use>
+                </svg>
+                <span>885</span>
+              </span> -->
+            </div>
+          </div>
+        </a>
+        <a class="avatar" href=""  th:href="|/web/usercenter/activity/${activity?.userId}|"  target="_blank">
+          <img class="img-circle" src="pc_static/images/user.jpg" th:src="${activity?.owner?.avatarUrl}"/>
+          <span class="user-name" th:if="${activity?.owner?.nickname!=null and activity?.owner?.nickname!=''}" th:text="${activity?.owner?.nickname}">Alive</span>
+          <span class="user-name" th:if="${activity?.owner?.nickname==null || activity?.owner?.nickname==''}" th:text="${activity?.owner?.username}">Alive</span>
+        </a>
+      </li>
+    </ul>
+    <h2 class="column-title">近期活动<small>/ RECENT MEETINGS</small></h2>
+    <ul class="activity-list clearfix">
+      <li class="activity-media" th:each="activity : ${activityRecentList}" th:if="${!#lists.isEmpty(activityRecentList)}">
+        <a  href="" th:href="|/web/activity/${activity.id}|" target="_blank">
+          <div class="activity-banner">
+            <img src="pc_static/images/activity-banner.jpg" th:src="${activity.activityBannerMobileUrl}" th:if="${activity.activityBannerMobileUrl!=null}"/>
+            <img src="http://cdn.ourwill.cn/huiyi/production/static/media/bannerbg.89127eba.jpg" th:if="${activity.activityBannerMobileUrl==null}"/>
+          </div>
+          <div class="activity-info">
+            <div class="activity-title"><span th:text="${activity.activityTitle}"/></div>
+            <div class="activity-date"><span th:text="${#dates.format(activity.startTime, 'yyyy.MM.dd')} +' - '+ ${#dates.format(activity.endTime, 'yyyy.MM.dd')}"/></div>
+            <div class="activity-detail">
+              <span class="look"  data-toggle="tooltip" data-placement="top" title="参与人数">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-guankan"></use>
+                </svg>
+                <span th:text="${activity?.activityStatistics?.watchCount}">336</span>
+                <!--<span>336</span>-->
+              </span>
+              <span class="star" data-toggle="tooltip" data-placement="top" title="收藏数">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-shoucang"></use>
+                </svg>
+                <span th:text="${activity?.activityStatistics?.collectCount}">1156</span>
+                <!--<span>336</span>-->
+              </span>
+              <!-- <span class="comment"  data-toggle="tooltip" data-placement="top" title="回复">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-pinglun"></use>
+                </svg>
+                <span>885</span>
+              </span> -->
+            </div>
+          </div>
+        </a>
+        <a class="avatar" th:href="|/web/usercenter/activity/${activity?.userId}|" th:if="${activity?.userId!=null}" target="_blank">
+          <img class="img-circle" src="pc_static/images/user.jpg" th:src="${activity?.owner?.avatarUrl}"/>
+          <!-- <span class="user-name" th:text="${activity?.owner?.nickname}">Alive</span> -->
+          <span class="user-name" th:if="${activity?.owner?.nickname!=null and activity?.owner?.nickname!=''}" th:text="${activity?.owner?.nickname}">Alive</span>
+          <span class="user-name" th:if="${activity?.owner?.nickname==null || activity?.owner?.nickname==''}" th:text="${activity?.owner?.username}">Alive</span>
+        </a>
+      </li>
+    </ul>
+    <!--<nav aria-label="Page navigation">-->
+      <!--<ul class="pagination">-->
+        <!--<li>-->
+          <!--<a href="#" aria-label="Previous">-->
+            <!--<span aria-hidden="true">&laquo;</span>-->
+          <!--</a>-->
+        <!--</li>-->
+        <!--<li><a href="#">1</a></li>-->
+        <!--<li><a href="#">2</a></li>-->
+        <!--<li><a href="#">3</a></li>-->
+        <!--<li><a href="#">4</a></li>-->
+        <!--<li><a href="#">5</a></li>-->
+        <!--<li>-->
+          <!--<a href="#" aria-label="Next">-->
+            <!--<span aria-hidden="true">&raquo;</span>-->
+          <!--</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</nav>-->
+  </div>
+  <div class="service-register">
+    <div>
+      <span>现在注册，即可免费体验</span>
+      <a class='register_btn' th:href="@{${registerUrl}(service=${#httpServletRequest.requestURL})}">立即注册</a>
+    </div>
+  </div>
+</div>
+
+<!--# include file="/inc/footer.html" -->
+<div th:include="/inc/footer::html" ></div>
+</html>
+

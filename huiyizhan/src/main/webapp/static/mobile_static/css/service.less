@@ -1,0 +1,134 @@
+ .service-mobile{
+     .mainContainer {
+         .banner {
+             position: relative;
+             background-color: #ffffff;
+             img {
+                 width: 100%;
+             }
+             .content {
+                 color: #ffffff;
+                 position: absolute;
+                 top: 45px;
+                 left: 30px;
+                 h5 {
+                     font-size: 25px;
+                     font-weight: 500;
+                 }
+                 p {
+                     font-weight: 400;
+                     font-size: 14px;
+                     line-height: 24px;
+                     margin-top: 10px;
+                 }
+                 a {
+                     display: block;
+                     margin-top: 30px;
+                     font-size: 14px;
+                     color: #2c7dfa;
+                     background-color: #ffffff;
+                     width: 95px;
+                     height: 35px;
+                     line-height: 35px;
+                     text-align: center;
+                     border: none;
+                     border-radius: 18px;
+                     outline: none;
+                 }
+             }
+         }
+         .layout {
+             display: flex;
+             justify-content: space-between;
+             padding: 25px;
+             &:nth-child(even) {
+                 background-color: #ffffff;
+             }
+             &:nth-child(odd) {
+                 background-color: #f4f7fa;
+             }
+             &.layout1 {
+                 .box {
+                     height: 60px;
+                     display: flex;
+                     flex-direction: column;
+                     justify-content: space-between;
+                     align-items: center;
+                     img {
+                         height: 30px;
+                     }
+                     p {
+                         font-size: 14px;
+                         color: #333333;
+                     }
+                 }
+             }
+             &.layout2 {
+                 display: block;
+                 .img-container {
+                     text-align: center;
+                     img {
+                         margin-top: 60px;
+                         margin-left: -9999px;
+                         margin-right: -9999px;
+                         zoom: 0.5; // 火狐不支持，然而这是移动端
+                     }
+                 }
+                 .serviceCard {
+                     .box {
+                         .iconContainer {
+                             width: 23px;
+                             min-width: 23px;
+                             max-width: 23px;
+                             svg {
+                                 vertical-align: baseline;
+                             }
+                             .icon {
+                                 width: 1em;
+                                 height: 1em;
+                                 vertical-align: -0.15em;
+                                 fill: currentColor;
+                                 overflow: hidden;
+                             }
+                         }
+                         margin-top: 15px;
+                         border: 1px solid #45a9ff;
+                         border-radius: 4px;
+                         padding: 14px 25px 14px 16px;
+                         display: flex;
+                         justify-content: space-between;
+                         .icon {
+                             width: 20px;
+                             min-width: 20px;
+                             max-width: 20px;
+                             flex-flow: 0;
+                         }
+                         .content {
+                             flex-grow: 1;
+                             h5 {
+                                 font-size: 14px;
+                                 color: #2b313c;
+                                 margin-bottom: 5px;
+                             }
+                             p {
+                                 font-size: 14px;
+                                 color: #9098a8;
+                             }
+                         }
+                     }
+                 }
+                 .serviceTitle {
+                     .title {
+                         color: #2b313c;
+                         font-size: 16px;
+                         margin-bottom: 10px;
+                     }
+                     .intro {
+                         font-size: 14px;
+                         color: #9098a8;
+                     }
+                 }
+             }
+         }
+     }
+ }

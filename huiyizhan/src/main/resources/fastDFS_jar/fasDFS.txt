@@ -1,0 +1,5 @@
+
+
+--为maven增加jar包命令 -Dfile= 后面为jar包的路径 例如：/e/fastdfs/fastdfs-client-java-master/target/fastdfs-client-java-1.27-SNAPSHOT.jar
+
+mvn install:install-file -DgroupId=org.csource -DartifactId=fastdfs-client-java -Dversion=1.27-SNAPSHOT -Dpackaging=jar -Dfile=

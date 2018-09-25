@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>活动站验票公众号</title>
+  <link rel="stylesheet" type="text/css" href="/pc_static/css/lib/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/pc_static/css/inspect_ticket.css" />
+  <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+
+  <script>
+      $(function(){
+          $(".demo").each(function (i,demo) {
+              var autoCode=$("#authCode",demo).text();
+              $("#qrcode",demo).attr("src","http://www.gbtags.com/gb/qrcode?t="+autoCode+"&s=100");
+          })
+      })
+  </script>
+</head>
+<body>
+  <div class="mainContainer">
+    <p class="text">二维码/验票号用于现场验票，请携带至会场</p>
+    <div class="ticketWrapper" >
+        <div class="activity" th:if="${activity!=null}">
+          <div class="content">
+            <h1 class="title"><span  th:text="${activity?.activityTitle}"/></h1>
+            <p class="time"><span th:text="${#dates.format(activity.startTime, 'yyyy.MM.dd HH:mm')} +' - '+ ${#dates.format(activity.endTime, 'yyyy.MM.dd HH:mm')}"/></p>
+            <p class="address"><span th:text="${activity?.activityAddress}"/></p>
+          </div>
+          <div class="hole-block-top"></div>
+          <div class="hole hole-bottom-r"></div>
+          <div class="hole hole-bottom-l"></div>
+        </div>
+        <div class="activity" th:if="${activity==null}">
+          <div class="content">
+            <h1 class="title">暂无可用门票或门票已失效</h1>
+          </div>
+          <div class="hole-block-top"></div>
+          <div class="hole hole-bottom-r"></div>
+          <div class="hole hole-bottom-l"></div>
+        </div>
+        <div class="ticket border-1px-t" th:each="ticket : ${ticketsRecordList}" th:if="${ticketsRecordList!=null}">
+          <div class="content demo" th:if="${ticket.ticketStatus==1}">
+            <h1 class="title"><span  th:text="${ticket.ticketsName}"/></h1>
+            <div style="display: none;"><span id="authCode"  th:text="${ticket.authCode}"/></div>
+            <div class="QRCode">
+              <img width=100% height=100% id="qrcode" src="">
+            </div>
+            <p class="code border-1px-b-dotted"><span  th:text="${ticket.signCode}"/></p>
+            <div class="ticketMsg">
+              <p class="name">姓名<span><span  th:text="${ticket.confereeName}"/></span></p>
+              <p class="price">票价<span>￥<span  th:text="${ticket.ticketsPrice}"/></span></p>
+            </div>
+          </div>
+          <div class="content demo" th:if="${ticket.ticketStatus==3}">
+            <h1 class="title test"><span th:text="${ticket.ticketsName}" /></h1>
+            <h1 class="title title1 test">
+              <span th:text="'门票审核中,请耐心等待'" />
+            </h1>
+            <div class="QRCode">
+              <img width=100% height=100% id="" src="/pc_static/images/await-examine.png">
+            </div>
+            <p class="code border-1px-b-dotted test">
+              <span th:text="'审核通知会以微信公众号或邮件的形式通知您，请注意查收'" />
+            </p>
+            <div class="ticketMsg">
+              <p class="name">姓名<span><span th:text="${ticket.confereeName}" /></span></p>
+              <p class="price">票价<span>￥<span th:text="${ticket.ticketsPrice}" /></span>
+              </p>
+            </div>
+          </div>
+          <div class="hole hole-top-r"></div>
+          <div class="hole hole-top-l"></div>
+          <!--<div class="hole-block-bottom"></div>
+          <div class="hole hole-bottom-l"></div>-->
+          <div class="hole hole-bottom-r"></div>
+          <div class="hole hole-bottom-l"></div>
+        </div>
+    </div>
+    <p class="text">该票务由映目活动提供</p>
+  </div>
+</body>
+</html>

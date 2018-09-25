@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--# include file="/inc/header.html" -->
+<head th:include="/inc/header::head" ></head>
+<div class="header" th:include="/inc/headbody::html" ></div>
+<div data-page='service' id="servicePage">
+	<div class="service-banner">
+		<div class="inner">
+			<div class="text_wrap">
+				<div class="title">服务</div>
+				<p>专业的技术团队，为不同需求的客户订制专属的活动主页、专业的票务管理系统、专业的活动后台管理系统，为您打造极致的用户体验</p>
+				<a class="btn" href='/web/create'>立即创建</a>
+			</div>
+		</div>
+	</div>
+	<div class="service-container">
+		<div class="contain-header">
+			<ul class="sevInner">
+				<li>
+					<div class="item-pic-position">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-yizhanshi"></use>
+          	</svg>
+					</div>
+					<p class="item-heading">一站式创建活动</p>
+					<p class="item-contain">一站式活动管理平台，包括活动创建与发布、活动分享推广、票务管理等。</p>
+				</li>
+				<li>
+					<div class="item-pic-position">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-huodong1"></use>
+          	</svg>
+					</div>
+					<p class="item-heading">专属活动页</p>
+					<p class="item-contain">创建活动即可生成专属的活动页面，方便您分享推广。</p>
+				</li>
+				<li>
+					<div class="item-pic-position">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-baocun"></use>
+          	</svg>
+					</div>
+					<p class="item-heading">永久保存历史活动</p>
+					<p class="item-contain">专属的个人页面将为您永久保存活动记录，方便您的复查</p>
+				</li>
+			</ul>
+		</div>
+		<div class="contain-section">
+			<div class="section-container">
+				<div class="section-pic">
+					<svg class="icon item-icon" aria-hidden="true">
+          	<use xlink:href="#icon-chuangjian"></use>
+        	</svg>
+				</div>
+				<div class="section-title">
+					<p class="section-title-heading">可选组件优化创建流程</p>
+					<p class="section-title-contain">映目活动将为您提供多种自定义组件，创建活动时只需选择您需要的内容，实现活动页面的自定义，有效避免冗杂信息的干扰</p>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>多种自定义组件</label>
+							<p>活动日程、活动嘉宾、合作支持、联系方式等组件可选</p>
+          	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gray-section">
+			<div class="section-container">
+				<div class="section-pic">
+					<svg class="icon item-icon" aria-hidden="true">
+          	<use xlink:href="#icon-guanli"></use>
+        	</svg>
+				</div>
+				<div class="section-title">
+					<p class="section-title-heading">专业票务管理</p>
+					<p class="section-title-contain">用户可以在线自定义门票发售日期、发售时间、票数、限额等，并支持设置多个价格点和最大/最小订单数，以此保证门票的可用性</p>
+					<div class="forward-box"></div>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            				<use xlink:href="#icon-duihao1"></use>
+          				</svg>
+						<div>
+							<label>在线售票与门票管理</label>
+							<p>线上售票，并配有专业的票务管理系统，可实现活动人员管理和实时数据统计</p>
+						</div>
+					</div>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+							<use xlink:href="#icon-duihao1"></use>
+						</svg>
+          				<div>
+          					<label>自动生成电子门票</label>
+							<p>用户购买成功后，自动生成电子门票，门票含二维码，用于现场扫码验票</p>
+          				</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contain-section">
+			<div class="section-container">
+				<div class="section-pic">
+					<svg class="icon item-icon" aria-hidden="true">
+          	<use xlink:href="#icon-zhuanshuhuiyi"></use>
+        	</svg>
+				</div>
+				<div class="section-title">
+					<p class="section-title-heading">专属活动管理后台</p>
+					<p class="section-title-contain">映目活动为用户打造专属的活动管理后台，方便自由管理活动内容和个人信息活动</p>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>创建预发布</label>
+							<p>创建的活动可随时修改</p>
+          	</div>
+					</div>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>门票设置与管理</label>
+							<p>可设置门票的类型、售票数量等，可实时查看售票情况</p>
+          	</div>
+					</div>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>订单与发票管理</label>
+							<p>订单购买信息可在管理后台查看，如需发票可在后台填写发票信息索要发票</p>
+          	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gray-section">
+			<div class="section-container">
+				<div class="section-pic">
+					<svg class="icon item-icon" aria-hidden="true">
+          	<use xlink:href="#icon-tuiguang"></use>
+        	</svg>
+				</div>
+				<div class="section-title">
+					<p class="section-title-heading">平台推广助您引流吸粉</p>
+					<p class="section-title-contain">
+						映目活动平台为您定制专属的活动页面，可以在主页嵌入主办方LOGO、主办方信息等内容，并且可以随时分享，有助于活动推广
+					</p>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>活动页面嵌入推广内容</label>
+							<p>创建活动时用户可嵌入推广内容，内容都显示在活动主页</p>
+          	</div>
+					</div>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>专属活动页面一键分享</label>
+							<p>专属活动页面可一键分享至微信、微博、QQ等交流平台。</p>
+          	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contain-section">
+			<div class="section-container">
+				<div class="section-pic">
+					<svg class="icon item-icon" aria-hidden="true">
+          	<use xlink:href="#icon-youhui"></use>
+        	</svg>
+				</div>
+				<div class="section-title">
+					<p class="section-title-heading">价格合理，优惠多多</p>
+					<p class="section-title-contain">映目活动为满足用户需求，特推出多个福利活动，有意长期合作的用户，还有更多优惠</p>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>多种版本不同价格供用户选择</label>
+							<p>开发免费版、包场版、年费版、定制版等多种版本满足用户不同的需求</p>
+          	</div>
+					</div>
+					<div class="static_check">
+						<svg class="icon item-icon" aria-hidden="true">
+            	<use xlink:href="#icon-duihao1"></use>
+          	</svg>
+          	<div>
+          		<label>多买多优惠</label>
+							<p>目前只开放免费版本，后期将陆续开放收费版本，买的越多优惠越多</p>
+          	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--# include file="/inc/footer.html" -->
+<div th:include="/inc/footer::html" ></div>
+</html>

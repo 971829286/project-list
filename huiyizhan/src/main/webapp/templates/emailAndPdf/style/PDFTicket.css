@@ -1,0 +1,113 @@
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(237, 240, 243, 1);
+}
+.mainContainer {
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*bottom: 0;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*margin: auto;*/
+  width: 919px;
+  height: 393px;
+  transform: scale(.5, .5);
+}
+.mainContainer > .mainBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.mainContainer > .mainBg > img {
+  /* box-shadow: 0 0px 7px 2px rgba(55, 79, 118, 0.2); */
+}
+.mainContainer > .mainContent {
+  position: relative;
+  /* display: flex;
+  justify-content: space-between; */
+  width: 100%;
+  height: 100%;
+}
+.mainContainer > .mainContent > .remindInLeft {
+  position: relative;
+  /* top: 0;
+  left: 0; */
+  float: left;
+  width: 78px;
+  height: 100%;
+}
+/*.mainContainer > .mainContent > .remindInLeft > span {*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%, -50%) rotate(-90deg);*/
+  /*white-space: nowrap;*/
+  /*font-size: 18px;*/
+  /*color: rgba(202, 223, 255, 1);*/
+/*}*/
+.mainContainer > .mainContent > .mainInRight {
+  float: right;
+  width: calc(100% - 78px);
+  height: 100%;
+  /* display: flex; */
+  justify-content: space-between;
+}
+.mainContainer > .mainContent > .mainInRight > .layoutLeft {
+  position: relative;
+  float: left;
+  width: calc(100% - 297px);
+  padding: 67px 48px 78px 52px;
+  box-sizing: border-box;
+}
+.mainContainer > .mainContent > .mainInRight > .layoutLeft > h1.title {
+  font-size: 26px;
+  line-height: 36px;
+  color: rgba(51, 51, 51, 1);
+  font-weight: 400;
+}
+.mainContainer > .mainContent > .mainInRight > .layoutLeft > .ticketMsg {
+  position: absolute;
+  top: 154px;
+  left: 52px;
+  width: 448px;
+  /* display: flex;
+  justify-content: space-between; */
+  /* flex-wrap: wrap; */
+}
+.mainContainer > .mainContent > .mainInRight > .layoutLeft > .ticketMsg > .msgItem {
+  max-width: 209px;
+  height: 111px;
+  float: left;
+  width: 224px
+  /* flex: 0 0 50%; */
+}
+.mainContainer > .mainContent > .mainInRight > .layoutLeft > .ticketMsg > .msgItem > .title {
+  font-size: 18px;
+  line-height: 49px;
+  color: rgba(153, 153, 153, 1);
+}
+.mainContainer > .mainContent > .mainInRight > .layoutLeft > .ticketMsg > .msgItem > .text {
+  font-size: 21px;
+  line-height: 31px;
+  color: rgba(51, 51, 51, 1);
+}
+.mainContainer > .mainContent > .mainInRight > .layoutRight {
+  float: right;
+  width: 297px;
+  height: 100%;
+}
+.mainContainer > .mainContent > .mainInRight > .layoutRight > .QRCode {
+  width: 195px;
+  height: 195px;
+  margin: 79px auto 18px;
+}
+.mainContainer > .mainContent > .mainInRight > .layoutRight > .code {
+  font-size: 31px;
+  line-height: 31px;
+  color: rgba(77, 77, 77, 1);
+  text-align: center;
+  font-weight: 600;
+}

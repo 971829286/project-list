@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--# include file="/inc/header.html" -->
+<head th:include="/inc/header::head" ></head>
+<div class="header" th:include="/inc/headbody::html" ></div>
+<div data-page='price' id="pricePage">
+	<div class="price-banner">
+		<div class="banner-info">
+			<h3>最低0费用，创建专属活动</h3>
+			<h6>最优惠的价格与最专业的服务</h6>
+			<a class="btn create-btn price-creat-btn" href="/web/create">立即创建</a>
+		</div>
+	</div>
+	<div class="price-container">
+			<div class="price-inner">
+				<h3 class="price-title">产品价格<i></i></h3>
+				<div class="price-title-intro">
+					总费用 = 版本费用 + 门票总收入 * 2%
+					<p>无额外功能费</p>
+				</div>
+				<div class="function-group">
+					<div class="price-function privilege">
+						<header>
+							<h3>功能特权</h3>
+							<div class="price-custom-editon"></div>
+						</header>
+						<ul>
+							<li>活动发布</li>
+							<li>活动网站在线编辑</li>
+							<li>隐私设置</li>
+							<li>网络模板</li>
+							<li>网站LOGO</li>
+							<li>社交分享</li>
+							<li>线上售票</li>
+							<li>问卷调查</li>
+							<li>门票审核</li>
+							<li>短信通知</li>
+							<li>门票形式</li>
+							<li>验票形式</li>
+							<li>活动数据统计</li>
+						</ul>
+
+					</div>
+					<div class="price-function free-edition">
+						<header>
+							<h3>免费版</h3>
+							<a href="/web/create" class="immediate-creation">立即创建</a>
+						</header>
+						<ul>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-guanbi" aria-hidden="true">
+									<use xlink:href="#icon-guanbi"></use>
+								</svg>
+							</li>							
+							<li>仅默认模板</li>
+							<li>项目活动LOGO</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-guanbi" aria-hidden="true">
+									<use xlink:href="#icon-guanbi"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>0.1￥/条</li>
+							<li>PDF版、微信版</li>
+							<li>二维码、验证码</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+						</ul>
+					</div>
+					<div class="price-function prices">
+						<header>
+							<h3>专业版</h3>
+							<a href="#" class="not-open">暂未开放</a>
+						</header>
+						<ul>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>							
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>所有模板均可</li>
+							<li>自定义LOGO</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+							<li>300条免费短信</li>
+							<li>PDF版、微信版</li>
+							<li>二维码、验证码</li>
+							<li>
+								<svg class="icon icon-chenggong" aria-hidden="true">
+									<use xlink:href="#icon-chenggong"></use>
+								</svg>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="price-register" th:if="${loginUser==null}">
+		<h3>现在注册进行体验</h3>
+		<p>映目活动拥有最专业的活动创建管理系统,快加入我们吧!</p>
+		<a href="" th:href="|${registerUrl}?service=${systemDomain}|">立即注册</a>
+	</div>
+</div>
+<!--# include file="/inc/footer.html" -->
+<div th:include="/inc/footer::html" ></div>
+</html>

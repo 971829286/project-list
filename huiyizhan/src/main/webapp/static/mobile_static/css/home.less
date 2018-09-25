@@ -1,0 +1,113 @@
+@import url("mixins.less");
+
+.index-mobile {
+	.mainContainer {
+		.homeBanner {
+			width: 100%;
+			height: 208px;
+			font-size: 40px;
+			text-align: center;
+			.swiper-container {
+				width: 100%;
+				height: 208px;
+				.swiper-wrapper{
+					width: 100%;
+					height: 208px;
+				}
+				.swiper-slide{
+					width: 100%;
+					height: 208px;
+				}
+				a{
+					// display: block;
+					width: 100%;
+					height: 208px;
+				}
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+			.swiper-pagination {
+				bottom: 0;
+				span {
+					background-color: rgba(255, 255, 255, .5);
+					&.swiper-pagination-bullet-active {
+						background-color: rgba(255, 255, 255, 1);
+					}
+				}
+			}
+		}
+	.activityListView {
+      .title {
+        width: calc(~'100% - 40px');
+        margin: 0 20px;
+        margin-top: 14px;
+        padding-left: 8px;
+        box-sizing: border-box;
+        border-left: 2px solid #2c7dfa;
+        line-height: 15px;
+        font-size: 16px;
+        font-weight: 200;
+      }
+      ul > .activityListLi {
+				padding: 14px 0;
+				margin: 0 20px;
+				list-style-type:none;
+				.border-1px-b(#D8DBE0);
+				a {
+					display: block;
+					.activityList {
+					  width: 100%;
+					  // padding: 14px 20px;
+					  box-sizing: border-box;
+					  display: flex;
+					  justify-content: space-between;
+					  background-color: #ffffff;
+					  .listImg {
+					    width: 137.5px;
+					    height: 75px;
+					    border-radius: 4px;
+					    overflow: hidden;
+					    margin-right: 14px;
+					    img {
+					      width: 100%;
+					      height: 100%;
+					      object-fit: cover;
+					    }
+					  }
+					  .listContent {
+							position: relative;
+							width: calc(~"100% - 152px");
+							top:-3px;
+					    .name {
+								// height: 51px;
+								// line-height: 1.6;
+								line-height: 27.2px;
+                font-size: 17px;
+					      color: #2b313c;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								display: -webkit-box;
+								-webkit-line-clamp: 2;
+								/*! autoprefixer: off */
+								-webkit-box-orient: vertical;
+								-moz-box-orient: vertical;
+								/* autoprefixer: on */
+					    }
+					    .date {
+								position: absolute;
+								// top:3px;
+								bottom: -2px;
+					      font-size: 12px;
+					      //font-weight: 200;
+					      color: #9098a8;
+					    }
+					  }
+					}
+				}
+      }
+    }
+	}
+}

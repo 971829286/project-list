@@ -1,0 +1,335 @@
+html {
+  font-size: 10px;
+  height: 100%;
+}
+html body {
+  position: relative;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: "PingFang SC", "微软雅黑", "Microsoft YaHei", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  transition: all 0.3s;
+}
+html body button {
+  transition: all 0.3s;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 50px;
+  background-color: #ffffff;
+}
+header.hidden {
+  overflow: hidden;
+}
+header .mask {
+  z-index: -1;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity .4s;
+}
+header .mask.maskZ {
+  z-index: 500;
+}
+header .mask.maskO {
+  opacity: 1;
+}
+header .meetingHeader {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  z-index: 499;
+}
+header .meetingHeader .left {
+  margin-left: 15px;
+  flex-grow: 0;
+  font-size: 20px;
+  color: #b8bcc4;
+}
+header .meetingHeader .title {
+  flex-grow: 1;
+}
+header .meetingHeader .title h1 {
+  text-align: center;
+  font-size: 23px;
+  color: #2c7dfa;
+}
+header .meetingHeader .title .activity-icon {
+  width: 100%;
+  height: 100px;
+  color: #2c7dfa;
+}
+header .meetingHeader .right {
+  margin-right: 15px;
+  flex-grow: 0;
+  font-size: 20px;
+  color: #b8bcc4;
+}
+header .menu {
+  display: none;
+  width: 250px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  bottom: 0;
+  z-index: 999;
+  background-color: #ffffff;
+  animation-duration: .3s;
+}
+header .menu.show {
+  display: block;
+}
+header .menu .close {
+  position: absolute;
+  top: 15px;
+  right: 16px;
+  border: none;
+  background-color: #ffffff;
+}
+header .menu .close .icon {
+  width: 15px;
+  height: 15px;
+}
+header .menu .noLogin {
+  margin-top: 95px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: block;
+}
+header .menu .noLogin.hasLogin {
+  display: none;
+}
+header .menu .noLogin a {
+  display: block;
+  width: 190px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 16px;
+}
+header .menu .noLogin a:first-child {
+  margin-bottom: 15px;
+  color: #2c7dfa;
+  background-color: #ffffff;
+  border: 1px solid #2c7dfa;
+}
+header .menu .noLogin a:last-child {
+  background-color: #2c7dfa;
+  color: #ffffff;
+}
+header .menu .noLogin.hasLogin {
+  display: none;
+}
+header .menu .Login {
+  margin-top: 60px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+header .menu .Login.hasLogin {
+  display: block;
+}
+header .menu .Login .version {
+  color: #07d79c;
+  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+header .menu .Login .userInfo a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .menu .Login .userInfo a > div h1 {
+  color: #2b313c;
+  font-size: 17px;
+}
+header .menu .Login .userInfo a > div p {
+  color: #9098a8;
+  font-size: 13px;
+}
+header .menu .Login .userInfo a svg {
+  color: #9098a8;
+  width: 10px;
+  height: 10px;
+}
+header .menu .Login .lineContainer {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0;
+}
+header .menu .Login .lineContainer .line {
+  height: 1px;
+  background-color: #d8dbe0;
+  margin-left: -100px;
+  margin-right: -100px;
+  width: 250px;
+}
+header .menu .Login .powerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .menu .Login .powerInfo p {
+  color: #2b313c;
+  font-size: 13px;
+}
+header .menu .Login .powerInfo a {
+  font-size: 12px;
+  color: #ff9041;
+  border: 1px solid #ff9041;
+  width: 45px;
+  height: 25px;
+  line-height: 25px;
+  background-color: #ffffff;
+  outline: none;
+  border-radius: 2px;
+  text-align: center;
+}
+header .menu .Login .list > a {
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  color: #5d6574;
+  font-size: 14px;
+}
+header .menu .router {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+header .menu .router.notWechat {
+  bottom: 50px;
+}
+header .menu .router a.box {
+  display: block;
+  flex-basis: 50%;
+  text-align: center;
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  box-sizing: border-box;
+  line-height: 50px;
+  border-top: 1px solid #e9ebef;
+  border-right: 1px solid #e9ebef;
+}
+header .menu .router a.box:nth-child(1) svg {
+  color: #2c7dfa;
+}
+header .menu .router a.box:nth-child(2) svg {
+  color: #ff9041;
+}
+header .menu .router a.box:nth-child(3) svg {
+  color: #ff9041;
+}
+header .menu .router a.box:nth-child(4) svg {
+  color: #07d79c;
+}
+header .menu .router a.box span {
+  font-size: 14px;
+  color: #5d6574;
+}
+header .searchContainer {
+  height: 115px;
+  display: none;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #ffffff;
+  animation-duration: .3s;
+}
+header .searchContainer.show {
+  display: block;
+}
+header .searchContainer .iconContainer {
+  position: relative;
+  display: inline-block;
+  top: 12px;
+  left: 17px;
+}
+header .searchContainer .iconContainer .icon {
+  width: 20px;
+  height: 20px;
+}
+header .searchContainer .search {
+  position: absolute;
+  top: 45px;
+  left: 30px;
+  right: 30px;
+  height: 45px;
+  border: 1px solid #d8dbe0;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 45px;
+}
+header .searchContainer .search svg {
+  color: #2c7dfa;
+  font-size: inherit;
+  margin-left: 10px;
+}
+header .searchContainer .search input {
+  border: none;
+  font-size: inherit;
+  color: #5d6574;
+  width: calc(100% - 50px);
+  outline: none;
+}
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+footer .meetingFooter {
+  background-color: #2b313c;
+  height: 136px;
+  text-align: center;
+  display: flex;
+}
+footer .meetingFooter .container {
+  width: 300px;
+  margin: auto;
+}
+footer .meetingFooter .container h1 {
+  font-size: 23px;
+  color: #2c7dfa;
+}
+footer .meetingFooter .container p {
+  font-size: 14px;
+}
+footer .meetingFooter .container p.tel {
+  color: #ffffff;
+  margin: 5px 0;
+}
+footer .meetingFooter .container p.bottom {
+  font-size: 12px;
+  color: #5d6574;
+}
+main {
+  padding-bottom: 136px;
+  padding-top: 50px;
+}

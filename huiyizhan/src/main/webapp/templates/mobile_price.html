@@ -1,0 +1,73 @@
+<!--# include file="/inc/header.html" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/mobile_inc/header::header" ></head>
+<div th:include="/mobile_inc/headbody::headbody" ></div>
+<main data-page="price-mobile" class="price-mobile">
+    <div class="mainContainer">
+        <div class="banner">
+            <img src="/mobile_static/img/price-banner.png" alt=""/>
+            <div class="content">
+                <h5>最低0费用，创建专属活动</h5>
+                <p>最优惠的价格与最专业的服务</p>
+                <!--<a href="/web/create">立即创建</a>-->
+            </div>
+        </div>
+        <div class="layout layout1">
+            <h1>产品价格</h1>
+            <div class="box">
+                <h2>总费用 = 版本费用 + 门票总收入 * 2%</h2>
+                <p>无额外功能费</p>
+            </div>
+        </div>
+        <div class="layout layout2">
+            <h1>免费版</h1>
+            <!--<a href="/web/create" class="btn">立即创建</a>-->
+            <div class="layoutList">
+                <ul>
+                    <li class="item">活动发布</li>
+                    <li class="item">活动网站在线编辑</li>
+                    <li class="item itemUnfinished">隐私设置</li>
+                    <li class="item">默认网站模板</li>
+                    <li class="item itemUnfinished">网站LOGO自定义</li>
+                    <li class="item">社交分享</li>
+                    <li class="item">线上售票</li>
+                    <li class="item itemUnfinished">问卷调查</li>
+                    <li class="item itemUnfinished">门票审核</li>
+                    <li class="item">免费短信通知300条</li>
+                    <li class="item">门票形式：PDF、微信</li>
+                    <li class="item">验票形式：二维码、签到码</li>
+                    <li class="item">活动数据统计</li>
+                </ul>
+            </div>
+        </div>
+        <div class="layout layout2 layouts">
+            <h1>专业版</h1>
+            <a href="#" class="btn btnDisable">暂未开通</a>
+            <div class="layoutList">
+                <ul>
+                    <li class="item">活动发布</li>
+                    <li class="item">活动网站在线编辑</li>
+                    <li class="item">隐私设置</li>
+                    <li class="item">默认网站模板</li>
+                    <li class="item">网站LOGO自定义</li>
+                    <li class="item">社交分享</li>
+                    <li class="item">线上售票</li>
+                    <li class="item">问卷调查</li>
+                    <li class="item">门票审核</li>
+                    <li class="item">免费短信通知300条</li>
+                    <li class="item">门票形式：PDF、微信</li>
+                    <li class="item">验票形式：二维码、签到码</li>
+                    <li class="item">活动数据统计</li>
+                </ul>
+            </div>
+        </div>
+        <div class="layout layout3" th:if="${loginUser==null}">
+            <h1>现在注册进行体验</h1>
+            <p class="text">映目活动拥有专业的会议创建管理系统，现在加入我们吧！</p>
+            <a href="http://login.ourwill.cn/register?service=http://huiyizhan.ourwill.cn/" class="btn" th:href="|${registerUrl}?service=${systemDomain}|">立即注册</a>
+        </div>
+    </div>
+</main>
+<div th:include="/mobile_inc/footer::html" ></div>
+</html>
+<!--# include file="/inc/footer.html" -->

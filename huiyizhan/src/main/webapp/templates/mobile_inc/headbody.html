@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="headbody">
+        <header>
+            <a id="mask" class="mask " >
+
+            </a>
+            <div class="meetingHeader">
+                <div class="left"  id="search">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-Seach"></use>
+                    </svg>
+                </div>
+                <div class="title" >
+                <!-- <h1 >活动站</h1> -->
+                <svg class="icon activity-icon" aria-hidden="true">
+                    <use xlink:href="#icon-yingmuhuodong"></use>
+                </svg>
+                </div>
+                <div class="right" id="menu">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-caidan"></use>
+                    </svg>
+                </div>
+            </div>
+            <div id="menuBox" class="menu animated " >
+                <button id="menuClose" class="close">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-guanbi2"></use>
+                    </svg>
+                </button>
+                <div id="noLogin" class="noLogin" th:if="${loginUser == null}">
+                    <a herf="" th:href="@{${loginUrl}(service=${#httpServletRequest.requestURL})}">登录</a>
+                    <a herf="" th:href="@{${registerUrl}(service=${#httpServletRequest.requestURL})}">注册</a>
+                </div>
+                <div id="Login" class="Login" th:if="${loginUser != null}">
+                    <span class="version">免费版</span>
+                    <div class="userInfo">
+                        <a href="/web/activity/" th:href="|/web/usercenter/${loginUser.id}|">
+                            <div>
+                                <h1 th:text="${loginUser.nickname}" th:if="${loginUser.nickname != null and loginUser.nickname != ''}">张子涵</h1>
+                                <h1 th:text="${loginUser.username}" th:if="${loginUser.nickname == null or loginUser.nickname == ''}">张子涵</h1>
+                                <p th:text="${loginUser.email}" th:if="${loginUser.email != null and loginUser.email != ''}"></p>
+                                <p th:if="${loginUser.email == null or loginUser.email == ''}">未绑定邮箱</p>
+                            </div>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-you2"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="lineContainer">
+                        <div class="line"></div>
+                    </div>
+                    <!--<div class="powerInfo">-->
+                        <!--<p>未购买企业版授权</p>-->
+                        <!--<button>购买</button>-->
+                    <!--</div>-->
+                    <!--<div class="lineContainer">-->
+                        <!--<div class="line"></div>-->
+                    <!--</div>-->
+                    <div class="list">
+                        <a href="/web/usercenter/" th:href="|/web/usercenter/${loginUser.id}?currIndex=0|">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-wodehuiyi"></use>
+                            </svg>
+                            <span>我的活动</span>
+                        </a>
+                        <a href="/web/usercenter/" th:href="|/web/usercenter/${loginUser.id}?currIndex=1|">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-wodemenpiao"></use>
+                            </svg>
+                            <span>我的门票</span>
+                        </a>
+                        <!-- <a href="/manage">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-guanlihoutai"></use>
+                            </svg>
+                            <span>管理后台</span>
+                        </a> -->
+                        <a href="/logout" th:if="${isWeChatLogin == true}" >
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-tuichudenglu"></use>
+                            </svg>
+                            <span>退出登录</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="router" >
+                    <a href="/" class="box">
+                        <svg  class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-shouye"></use>
+                        </svg>
+                        <span>首页</span>
+                    </a>
+                    <a href="/meetingList" class="box">
+                        <svg  class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-huodong"></use>
+                        </svg>
+                        <span>活动</span>
+                    </a>
+                    <a href="/service" class="box">
+                        <svg  class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-fuwu"></use>
+                        </svg>
+                        <span>服务</span>
+                    </a>
+                    <a href="/price" class="box">
+                        <svg  class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-jiage"></use>
+                        </svg>
+                        <span>价格</span>
+                    </a>
+                </div>
+            </div>
+            <div id="searchBox" class="searchContainer animated">
+                <div id="searchClose" class="iconContainer" >
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shangla"></use>
+                    </svg>
+                </div>
+                <div class="search">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-Seach"></use>
+                    </svg>
+                    <input
+                        type="text"
+                        placeholder="搜索活动关键字"
+                        id="searchInput"
+                    />
+                </div>
+            </div>
+        </header>
+    </div>
+</html>

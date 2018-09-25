@@ -1,0 +1,13 @@
+{
+    "static":
+    {
+        "js":
+        {
+            "main":["main.js", "swiper-3.3.1.min.js"]
+        },
+        "css":
+        {
+            "main":["inc.less", "service.less", "activity.less", "home.less", "price.less", "service.less"]
+        }
+    }
+}

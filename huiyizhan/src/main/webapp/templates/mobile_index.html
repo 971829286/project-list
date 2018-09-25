@@ -1,0 +1,63 @@
+<!--# include file="/inc/header.html" -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/mobile_inc/header::header" ></head>
+<div th:include="/mobile_inc/headbody::headbody" ></div>
+<main data-page="index-mobile" class="index-mobile">
+    <div class="mainContainer">
+        <div class="homeBanner">
+            <div class="swiper-container" id="bannerSlider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" th:each="banner:${bannerHomes}">
+                        <a th:href="${banner.link}">
+                            <img src="./mobile_static/img/index_banner.jpg" alt="图片" th:src="${banner.
+                                mobilePicUrl}" th:alt="${banner.title}"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="activityListView">
+            <div class="title">热门推荐</div>
+            <ul>
+                <li class="activityListLi border-1px-b" th:each="activity : ${activityHotList}">
+                    <a th:href="|/web/activity/${activity.id}|">
+                        <div class="activityList">
+                            <div class="listImg">
+                                <img th:src="${activity.activityBannerMobileUrl}" th:if="${activity.activityBannerMobileUrl!=null}"/>
+                                <img src="http://cdn.ourwill.cn/huiyi/production/static/media/bannerbg.89127eba.jpg" th:if="${activity.activityBannerMobileUrl==null}"/>
+                            </div>
+                            <div class="listContent">
+                                <p class="name" th:text="${activity.activityTitle}">activity.activityTitle</p>
+                                <p class="date" th:text="${#dates.format(activity.startTime, 'MM月dd日 hh:mm')}">activity.startTime</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="activityListView">
+            <div class="title">近期活动</div>
+            <ul>
+                <li class="activityListLi border-1px-b" th:each="activity : ${activityRecentList}">
+                    <a th:href="|/web/activity/${activity.id}|">
+                        <div class="activityList">
+                            <div class="listImg">
+                                <img th:src="${activity.activityBannerMobileUrl}" th:if="${activity.activityBannerMobileUrl!=null}"/>
+                                <img src="http://cdn.ourwill.cn/huiyi/production/static/media/bannerbg.89127eba.jpg" th:if="${activity.activityBannerMobileUrl==null}"/>
+                            </div>
+                            <div class="listContent">
+                                <p class="name" th:text="${activity.activityTitle}">activity.activityTitle</p>
+                                <p class="date" th:text="${#dates.format(activity.startTime, 'yyyy.MM.dd')}">activity.startTime</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<div th:include="/mobile_inc/footer::html" ></div>
+</html>
+<!--# include file="/inc/footer.html" -->

@@ -1,0 +1,68 @@
+#homePage .swiper-container {
+  width: 100%;
+  min-width: 1180px;
+  height: 28vw;
+  min-height: 350px;
+}
+#homePage .swiper-container img {
+  width: 100%;
+  height: 100%;
+}
+#homePage .swiper-container .swiper-pagination-bullet:hover,
+#homePage .swiper-container .swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+#homePage .swiper-container .swiper-slide {
+  cursor: pointer;
+}
+#homePage .swiper-container .swiper-button-white {
+  opacity: .3;
+}
+#homePage .swiper-container .swiper-button-white:hover {
+  opacity: .8;
+}
+#homePage .pagination {
+  margin: 0 auto;
+}
+#homePage .service-register {
+  width: 100%;
+  height: 138px;
+  background-image: url('../images/register_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+#homePage .service-register div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#homePage .service-register div span {
+  margin-right: 40px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+}
+#homePage .service-register div .register_btn {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ffffff;
+  border: solid 1px #ffffff;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  text-align: center;
+  line-height: 40px;
+}
+#homePage .service-register div .register_btn:hover {
+  font-weight: 500;
+  color: #0091ff;
+  background-color: #ffffff;
+  border: solid 1px #ffffff;
+}
+#homePage .activity-detail {
+  display: inline-block;
+  margin-right: 3px;
+}

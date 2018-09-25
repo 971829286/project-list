@@ -1,0 +1,1 @@
+1. 使用聪厚部署的PDF服务现在把PDFTemplate.ftl移动到webapp/templates下

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" href="pc_static/css/projectExport.css" />
+    <script src="pc_static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+        const colorList = [
+            '#ee6894',
+            '#7e67ee',
+            '#cc6363',
+            '#80c693',
+            '#669cc9',
+            '#4a65ec',
+            '#efd786',
+            '#ebbe6c',
+            '#ebbe6c',
+            '#1a063b',
+            '#063C36'
+        ];
+    </script>
+</head>
+<body>
+    <div id="project-count">
+        <div class="psdbox">
+            <header>
+                <div class="logos">
+                    <img src="pc_static/images/project_logo.png" alt="映目活动"/>
+                </div>
+                <div class="titles">
+                    <div class="titleName" th:text="${survey.title}">关于会议举办的市场调查</div>
+                    <p class="text" th:text="'您好,这次调查主要是为了了解当下人们'+${survey.title} + '的看法和意见,非常感谢您对产品的支持与参与'">您好,这次调查主要是为了了解当下人们举办会议的方式方法，非常感谢您对产品的支持与参与</p>
+                </div>
+            </header>
+            
+            <!-- begin -->
+            <div class="content" th:each="surveyQuestion : ${answerStatistics}">
+                <div class="answerTitle">
+                    <h4 th:text="${surveyQuestion.title} + '(' + ${surveyQuestion.typeText} + ')'"></h4>
+                </div>
+                <div class="dataList-box">
+                    <div th:class="'graphical sid-' + ${surveyQuestion.id} + '-' + ${surveyQuestion.chartType}">
+
+                        <div class="chart" ></div>
+
+                        <script th:if="${surveyQuestion.chartType}==2" th:inline="javascript">
+                            // <!-- 柱形图 -->
+
+                            // 基于准备好的dom，初始化echarts实例
+                            var id = /*[[${surveyQuestion.id}]]*/ null;
+                            var type =/*[[${surveyQuestion.chartType}]]*/ null;
+                            var myChart = echarts.init( document.querySelector('.sid-'+id + '-' + type + ' .chart')  );
+                            var key = /*[[${surveyQuestion.data}]]*/ null;
+                            var total = /*[[${surveyQuestion.total}]]*/ null;
+                            var data = {
+                                x: [],
+                                num: []
+                            };
+                            var i = 0;
+                            for (var attr in key) {
+                                data.x.push(attr);
+                                data.num.push(Math.round((key[attr] / total) * 100));
+                                i++;
+                            }
+                            // 指定图表的配置项和数据
+                            var option = {
+                                xAxis: {
+                                    show: true,
+                                    data: data.x,
+                                    axisLine: {
+                                        // 坐标轴线
+                                        show: true, // 默认显示，属性show控制显示与否
+                                        lineStyle: {
+                                            // 属性lineStyle控制线条样式
+                                            color: '#71ecc9',
+                                            width: 1,
+                                            type: 'solid'
+                                        }
+                                    },
+                                    axisLabel: {
+                                        textStyle: {
+                                            fontSize: '14',
+                                            color: '#2b313c'
+                                        }
+                                    },
+                                    axisTick: {
+                                        // 坐标轴小标记
+                                        show: false
+                                    }
+                                },
+                                yAxis: {
+                                    show: true,
+                                    splitLine: {
+                                        // 分隔线
+                                        show: true, // 默认显示，属性show控制显示与否
+                                        lineStyle: {
+                                            // 属性lineStyle（详见lineStyle）控制线条样式
+                                            color: ['#dff0eb'],
+                                            width: 1,
+                                            type: 'solid'
+                                        }
+                                    },
+                                    axisLine: {
+                                        // 坐标轴线
+                                        show: true, // 默认显示，属性show控制显示与否
+                                        lineStyle: {
+                                            // 属性lineStyle控制线条样式
+                                            color: '#fff',
+                                            width: 1,
+                                            type: 'solid'
+                                        }
+                                    }
+                                },
+                                grid: {
+                                    x: 1,
+                                    y: 18
+                                },
+                                series: [
+                                    {
+                                        type: 'bar',
+                                        data: data.num,
+                                        barWidth: 40,
+                                        barMaxWidth: 50,
+                                        itemStyle: {
+                                            normal: {
+                                                color: function(params) {
+                                                    return colorList[params.dataIndex];
+                                                },
+                                                label: {
+                                                    show: true,
+                                                    position: 'top',
+                                                    color: '#2b313c',
+                                                    formatter: '{c}%'
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                animationThreshold: false
+                            };
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+
+
+                        <script th:if="${surveyQuestion.chartType}==3" th:inline="javascript">
+                            // <!-- 条形图 -->
+
+                            var id = /*[[${surveyQuestion.id}]]*/ null;
+                            var type =/*[[${surveyQuestion.chartType}]]*/ null;
+                            var myChart = echarts.init( document.querySelector('.sid-'+id + '-' + type + ' .chart')  );
+                            var key = /*[[${surveyQuestion.data}]]*/ null;
+                            var total = /*[[${surveyQuestion.total}]]*/ null;
+                            var data = {
+                                x: [],
+                                num: []
+                            };
+                            var i = 0;
+                            for (var attr in key) {
+                                data.x.push(attr);
+                                data.num.push(Math.round((key[attr] / total) * 100));
+                                i++;
+                            }
+                            var option = {
+                                calculable: true,
+                                xAxis: [
+                                    {
+                                        show: true,
+                                        splitLine: {
+                                            show: true,
+                                            lineStyle: {
+                                                color: ['#dff0eb'],
+                                                width: 1,
+                                                type: 'solid'
+                                            }
+                                        },
+                                        axisLine: {
+                                            // 坐标轴线
+                                            show: true, // 默认显示，属性show控制显示与否
+                                            lineStyle: {
+                                                // 属性lineStyle控制线条样式
+                                                color: '#fff',
+                                                width: 1,
+                                                type: 'solid'
+                                            }
+                                        }
+                                    }
+                                ],
+                                yAxis: [
+                                    {
+                                        type: 'category',
+                                        data: data.x,
+                                        inverse: true,
+                                        axisLine: {
+                                            // 坐标轴线
+                                            show: true, // 默认显示，属性show控制显示与否
+                                            lineStyle: {
+                                                // 属性lineStyle控制线条样式
+                                                color: '#71ecc9',
+                                                width: 1,
+                                                type: 'solid'
+                                            }
+                                        },
+                                        axisLabel: {
+                                            textStyle: {
+                                                fontSize: '14',
+                                                color: '#2b313c'
+                                            }
+                                        },
+                                        axisTick: {
+                                            // 坐标轴小标记
+                                            show: false
+                                        }
+                                    }
+                                ],
+                                grid: {
+                                    x: 70,
+                                    y: -10
+                                },
+                                series: [
+                                    {
+                                        type: 'bar',
+                                        data: data.num, //放百分比
+                                        barMinHeight: 50,
+                                        barWidth: 30,
+                                        barMaxWidth: 50,
+                                        itemStyle: {
+                                            normal: {
+                                                color: function(params) {
+                                                    return colorList[params.dataIndex];
+                                                },
+                                                label: {
+                                                    show: true,
+                                                    position: 'right',
+                                                    color: '#2b313c',
+                                                    formatter: '{c}%'
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                animationThreshold: false
+                            };
+                            myChart.setOption(option);
+
+                        </script>
+
+
+                        <script th:if="${surveyQuestion.chartType}==1" th:inline="javascript">
+                            // <!-- 饼状图 -->
+
+                            var id = /*[[${surveyQuestion.id}]]*/ null;
+                            var type =/*[[${surveyQuestion.chartType}]]*/ null;
+                            var myChart = echarts.init( document.querySelector('.sid-'+id + '-' + type + ' .chart')  );
+                            var key = /*[[${surveyQuestion.data}]]*/ null;
+                            var total = /*[[${surveyQuestion.total}]]*/ null;
+                            var data = [];
+                            var i = 0;
+                            for (var attr in key) {
+                                data.push({
+                                    value: Math.round((key[attr] / total) * 100),
+                                    name: attr
+                                });
+                                i++;
+                            }
+                            var option = {
+                                title: {
+                                    x: 'center'
+                                },
+                                grid: {
+                                    x: 70,
+                                    y: 1
+                                },
+                                series: [
+                                    {
+                                        type: 'pie',
+                                        radius: '80%',
+                                        data: data,
+                                        labelLine: {
+                                            normal: {
+                                                show: false
+                                            }
+                                        },
+                                        itemStyle: {
+                                            emphasis: {
+                                                shadowBlur: 10,
+                                                shadowOffsetX: 0,
+                                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                            },
+                                            normal: {
+                                                color: function(params) {
+                                                    return colorList[params.dataIndex];
+                                                },
+                                                label: {
+                                                    textStyle: {
+                                                        fontSize: '16',
+                                                        color: '#2b313c'
+                                                    },
+                                                    formatter: '{b}\n{c}%'
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                animationThreshold: false
+                            };
+
+                            myChart.setOption(option);
+                        </script>
+
+
+                    </div>
+                    <div class="dataOption">
+                      <div class="title">
+                        <span class="choose">选项</span>
+                        <span class="dataPic">
+                          <span class="gross">数据量</span>
+                        </span>
+                      </div>
+                      <div class="dataList" th:each="data,iterStat : ${surveyQuestion.data}">
+                        <div class="optionData">     
+                          <span th:class="'signColor color'+${iterStat.index}" ></span>
+                          <sapn class="option" th:text="${data.key}" >111</sapn>
+                        </div>
+                        <div class="numData" th:text="${data.value}" >111</div>
+                      </div>
+                    </div>
+
+                </div>
+            <!-- begin -->
+            </div>
+            <div class="foot">映目活动提供</div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    // var a = {"msg":"获取数据成功","code":0,"data":{"pageSize":5,"total":1,"data":[{"answerDetail":{"73":"1","74":"1"},"source":"4fee5055-f69d-4dc7-8533-02f62c32385b","createDate":"2018-07-16 17:47:13"}],"pageNum":1}}
+    // ids='11-0,33-0,55';
+</script>
+</html>
