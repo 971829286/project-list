@@ -1,0 +1,44 @@
+{
+  "name": "sad",
+  "version": "2.1.0",
+  "description": "sad framework",
+  "scripts": {
+    "i": "npm install --registry=http://registry.npm.souche-inc.com",
+    "build": "rm -rf ../webapp/resource && sad-entry && ./node_modules/@souche-f2e/atool-build/bin/atool-build -o ../webapp/resource",
+    "start": "./node_modules/@souche-f2e/sad-start/bin/sad-start -c webpack.config.js",
+    "lint": "./node_modules/.bin/eslint --ext js --ext jsx src || exit 0",
+    "postinstall": "npm-statistics"
+  },
+  "dependencies": {
+    "@souche-f2e/npm-statistics": "^0.2.2",
+    "@souche-f2e/sad": "^1.3.8",
+    "antd": "^3.9.1",
+    "moment": "^2.18.1",
+    "react": "15.4.2",
+    "react-addons-linked-state-mixin": "15.4.2",
+    "react-dom": "15.4.2",
+    "webpack": "2.4.1"
+  },
+  "devDependencies": {
+    "@souche-f2e/atool-build": "^1.0.0",
+    "@souche-f2e/sad-cli": "^0.10.0",
+    "@souche-f2e/sad-start": "^0.4.2",
+    "eslint": "^3.17.1",
+    "eslint-plugin-react": "^7.0.1",
+    "glob": "^7.1.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^3.1.7"
+  },
+  "license": "MIT",
+  "entry": {
+    "ActivityScreen": "./pages/ActivityScreen.jsx",
+    "banner/BannerPage": "./pages/banner/BannerPage.jsx",
+    "CarPage": "./pages/CarPage.jsx",
+    "index": "./pages/index.jsx",
+    "MaintenanceScreen": "./pages/MaintenanceScreen.jsx",
+    "OpenScreen": "./pages/OpenScreen.jsx",
+    "QuotePage": "./pages/QuotePage.jsx",
+    "ServiceToolScreen": "./pages/ServiceToolScreen.jsx",
+    "UserPage": "./pages/UserPage.jsx"
+  }
+}
