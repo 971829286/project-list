@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.souche</groupId>
+		<artifactId>bright-moon-gateway</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.souche</groupId>
+	<artifactId>bright-moon-gateway-core</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<properties>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+		<maven.test.skip>true</maven.test.skip>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cxf.version>2.4.3</cxf.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- bright-moon-gateway-api -->
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>bright-moon-gateway-api</artifactId>
+		</dependency>
+
+		<!-- netfinworks -->
+		<dependency>
+			<groupId>com.netfinworks.acs</groupId>
+			<artifactId>acs-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.ma.service</groupId>
+			<artifactId>ma-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.ues</groupId>
+			<artifactId>ues-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.fos</groupId>
+			<artifactId>fos-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.voucher</groupId>
+			<artifactId>voucher-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.pfs</groupId>
+			<artifactId>pfs-service-payment</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.payment.common</groupId>
+			<artifactId>payment-common-domain</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.deposit</groupId>
+			<artifactId>deposit-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.pbs</groupId>
+			<artifactId>pbs-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.common</groupId>
+			<artifactId>netfinworks-common-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.tradeservice</groupId>
+			<artifactId>tradeservice-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.cmf.common</groupId>
+			<artifactId>cmf-common-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.cmf.service</groupId>
+			<artifactId>cmf-service-facade</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.mq</groupId>
+			<artifactId>netfinworks-mq-utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.mq</groupId>
+			<artifactId>netfinworks-mq</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.mq</groupId>
+			<artifactId>netfinworks-mq-jms</artifactId>
+		</dependency>
+
+		<!-- optimus -->
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>shop-api</artifactId>
+			<version>1.3.11-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>map-service-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>optimus-swagger</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>optimus-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>optimus-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>optimus-mq</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>optimus-upload</artifactId>
+		</dependency>
+
+		<!-- fin -->
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>finance-counter-api</artifactId>
+			<version>2.0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.souche.tfb</groupId>
+			<artifactId>fin-settle-api</artifactId>
+		</dependency>
+
+		<!-- elastic-job -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-lite-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-lite-spring</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context-support</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+
+
+		<!-- other -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.javacsv</groupId>
+			<artifactId>javacsv</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.logback-extensions</groupId>
+			<artifactId>logback-ext-spring</artifactId>
+			<version>0.1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.ant/ant -->
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>umpay</groupId>
+			<artifactId>umpay.api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.dingtalk.chatbot</groupId>
+			<artifactId>dingtalk-chatbot-sdk</artifactId>
+			<version>0.9.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- common -->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.souche</groupId>
+			<artifactId>witness-mq-service-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netfinworks.dts</groupId>
+			<artifactId>dts-api</artifactId>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<configuration>
+					<configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
+					<overwrite>true</overwrite>
+					<verbose>true</verbose>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>${mysql.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
+
+</project>

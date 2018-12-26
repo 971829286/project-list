@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.souche.bmgateway.core.dao.MerchantUploadFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.souche.bmgateway.core.domain.MerchantUploadFlow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+    <result column="photo_type" property="photoType" jdbcType="VARCHAR" />
+    <result column="merchant_id" property="merchantId" jdbcType="VARCHAR" />
+    <result column="resp_info" property="respInfo" jdbcType="VARCHAR" />
+    <result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="gtm_create" property="gtmCreate" jdbcType="TIMESTAMP" />
+    <result column="gtm_modified" property="gtmModified" jdbcType="TIMESTAMP" />
+    <result column="extension" property="extension" jdbcType="VARCHAR" />
+    <result column="req_msg_id" property="reqMsgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="ResultMapWithBLOBs" type="com.souche.bmgateway.core.domain.MerchantUploadFlow" extends="BaseResultMap" >
+    <result column="picture" property="picture" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, out_trade_no, photo_type, merchant_id, resp_info, photo_url, status, gtm_create,
+    gtm_modified, extension, req_msg_id
+  </sql>
+
+  <sql id="Blob_Column_List" >
+    picture
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_merchant_upload_flow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByMemberId" resultMap="BaseResultMap" parameterType="com.souche.bmgateway.core.domain.MerchantUploadFlow" >
+    select
+    <include refid="Base_Column_List" />
+    from t_merchant_upload_flow
+    where merchant_id = #{merchantId,jdbcType=VARCHAR} and photo_type = #{photoType,jdbcType=VARCHAR} and status = 'S';
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_merchant_upload_flow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.souche.bmgateway.core.domain.MerchantUploadFlow" useGeneratedKeys="true" keyProperty="id">
+    insert into t_merchant_upload_flow (id, out_trade_no, photo_type,
+      merchant_id, resp_info, photo_url, 
+      status, gtm_create, gtm_modified, 
+      extension, req_msg_id, picture
+      )
+    values (#{id,jdbcType=INTEGER}, #{outTradeNo,jdbcType=VARCHAR}, #{photoType,jdbcType=VARCHAR}, 
+      #{merchantId,jdbcType=VARCHAR}, #{respInfo,jdbcType=VARCHAR}, #{photoUrl,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{gtmCreate,jdbcType=TIMESTAMP}, #{gtmModified,jdbcType=TIMESTAMP}, 
+      #{extension,jdbcType=VARCHAR}, #{reqMsgId,jdbcType=VARCHAR}, #{picture,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.souche.bmgateway.core.domain.MerchantUploadFlow" >
+    insert into t_merchant_upload_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="outTradeNo != null" >
+        out_trade_no,
+      </if>
+      <if test="photoType != null" >
+        photo_type,
+      </if>
+      <if test="merchantId != null" >
+        merchant_id,
+      </if>
+      <if test="respInfo != null" >
+        resp_info,
+      </if>
+      <if test="photoUrl != null" >
+        photo_url,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="gtmCreate != null" >
+        gtm_create,
+      </if>
+      <if test="gtmModified != null" >
+        gtm_modified,
+      </if>
+      <if test="extension != null" >
+        extension,
+      </if>
+      <if test="reqMsgId != null" >
+        req_msg_id,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="outTradeNo != null" >
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="photoType != null" >
+        #{photoType,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="respInfo != null" >
+        #{respInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="photoUrl != null" >
+        #{photoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="gtmCreate != null" >
+        #{gtmCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gtmModified != null" >
+        #{gtmModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extension != null" >
+        #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="reqMsgId != null" >
+        #{reqMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.souche.bmgateway.core.domain.MerchantUploadFlow" >
+    update t_merchant_upload_flow
+    <set >
+      <if test="outTradeNo != null" >
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="photoType != null" >
+        photo_type = #{photoType,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null" >
+        merchant_id = #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="respInfo != null" >
+        resp_info = #{respInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="photoUrl != null" >
+        photo_url = #{photoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="gtmCreate != null" >
+        gtm_create = #{gtmCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gtmModified != null" >
+        gtm_modified = #{gtmModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extension != null" >
+        extension = #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="reqMsgId != null" >
+        req_msg_id = #{reqMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.souche.bmgateway.core.domain.MerchantUploadFlow" >
+    update t_merchant_upload_flow
+    set out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      photo_type = #{photoType,jdbcType=VARCHAR},
+      merchant_id = #{merchantId,jdbcType=VARCHAR},
+      resp_info = #{respInfo,jdbcType=VARCHAR},
+      photo_url = #{photoUrl,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      gtm_create = #{gtmCreate,jdbcType=TIMESTAMP},
+      gtm_modified = #{gtmModified,jdbcType=TIMESTAMP},
+      extension = #{extension,jdbcType=VARCHAR},
+      req_msg_id = #{reqMsgId,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.souche.bmgateway.core.domain.MerchantUploadFlow" >
+    update t_merchant_upload_flow
+    set out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      photo_type = #{photoType,jdbcType=VARCHAR},
+      merchant_id = #{merchantId,jdbcType=VARCHAR},
+      resp_info = #{respInfo,jdbcType=VARCHAR},
+      photo_url = #{photoUrl,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      gtm_create = #{gtmCreate,jdbcType=TIMESTAMP},
+      gtm_modified = #{gtmModified,jdbcType=TIMESTAMP},
+      extension = #{extension,jdbcType=VARCHAR},
+      req_msg_id = #{reqMsgId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

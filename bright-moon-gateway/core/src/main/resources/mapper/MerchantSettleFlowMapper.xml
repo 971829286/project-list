@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.souche.bmgateway.core.dao.MerchantSettleFlowMapper" >
+
+  <resultMap id="BaseResultMap" type="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="shop_code" property="shopCode" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="out_merchant_id" property="outMerchantId" jdbcType="VARCHAR" />
+    <result column="mybank_order_no" property="mybankOrderNo" jdbcType="VARCHAR" />
+    <result column="return_msg" property="returnMsg" jdbcType="VARCHAR" />
+    <result column="gtm_create" property="gtmCreate" jdbcType="TIMESTAMP" />
+    <result column="gtm_modified" property="gtmModified" jdbcType="TIMESTAMP" />
+    <result column="extension" property="extension" jdbcType="VARCHAR" />
+    <result column="req_msg_id" property="reqMsgId" jdbcType="VARCHAR" />
+    <result column="call_back_url" property="callBackUrl" jdbcType="VARCHAR" />
+    <result column="call_back_status" property="callBackStatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="ResultMapWithBLOBs" type="com.souche.bmgateway.core.domain.MerchantSettleFlow" extends="BaseResultMap" >
+    <result column="req_info" property="reqInfo" jdbcType="LONGVARCHAR" />
+    <result column="resp_info" property="respInfo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, shop_code, member_id, uid, out_trade_no, status, merchant_name, out_merchant_id,
+    mybank_order_no, return_msg, gtm_create, gtm_modified, extension, req_msg_id, call_back_url, call_back_status
+  </sql>
+
+  <sql id="Blob_Column_List" >
+    req_info, resp_info
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_merchant_settle_flow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!-- 获取24小时内的处理中的商户入驻记录 -->
+  <select id="selectByDay" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_merchant_settle_flow
+    where call_back_status != 'S'
+    and status != 'I'
+    <![CDATA[ and gtm_modified >= NOW()-interval 24 hour; ]]>
+  </select>
+
+  <!-- 根据请求单号查询处理中的流水 -->
+  <select id="selectByOrderNo" resultMap="BaseResultMap" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    select
+    <include refid="Base_Column_List" />
+    from t_merchant_settle_flow
+    where status = #{status,jdbcType=VARCHAR} and mybank_order_no = #{mybankOrderNo,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 根据商户号查询 -->
+  <select id="selectByMemberId" resultMap="BaseResultMap" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    select
+    <include refid="Base_Column_List" />
+    from t_merchant_settle_flow
+    where 1=1
+    <if test="shopCode != null" >
+      and shop_code = #{shopCode,jdbcType=VARCHAR}
+    </if>
+    <if test="memberId != null" >
+      and member_id = #{memberId,jdbcType=VARCHAR}
+    </if>
+    <if test="uid != null" >
+      and uid = #{uid,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null" >
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="selectByMemberIdLimit" resultMap="BaseResultMap" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    select
+    <include refid="Base_Column_List" />
+    from t_merchant_settle_flow
+    where 1=1
+    <if test="memberId != null" >
+      and member_id = #{memberId,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null" >
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+    order by gtm_modified desc limit 1
+  </select>
+
+  <!-- 查询入驻成功或者入驻中的流水 -->
+  <select id="selectStatusNotFail" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_merchant_settle_flow
+    where status in ('P','S')
+    and shop_code = #{shopCode,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_merchant_settle_flow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" useGeneratedKeys="true" keyProperty="id">
+    insert into t_merchant_settle_flow (id, shop_code, member_id,
+      uid, out_trade_no, status, 
+      merchant_name, out_merchant_id, mybank_order_no, 
+      return_msg, gtm_create, gtm_modified, 
+      extension, req_msg_id, req_info, 
+      call_back_url, resp_info, call_back_status)
+    values (#{id,jdbcType=INTEGER}, #{shopCode,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=VARCHAR}, #{outTradeNo,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{merchantName,jdbcType=VARCHAR}, #{outMerchantId,jdbcType=VARCHAR}, #{mybankOrderNo,jdbcType=VARCHAR},
+      #{returnMsg,jdbcType=VARCHAR}, #{gtmCreate,jdbcType=TIMESTAMP}, #{gtmModified,jdbcType=TIMESTAMP}, 
+      #{extension,jdbcType=VARCHAR}, #{reqMsgId,jdbcType=VARCHAR}, #{reqInfo,jdbcType=LONGVARCHAR}, #{callBackUrl,jdbcType=VARCHAR},
+      #{respInfo,jdbcType=LONGVARCHAR}, #{callBackStatus,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    insert into t_merchant_settle_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="shopCode != null" >
+        shop_code,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="merchantName != null" >
+        merchant_name,
+      </if>
+      <if test="outMerchantId != null" >
+        out_merchant_id,
+      </if>
+      <if test="mybankOrderNo != null" >
+        mybank_order_no,
+      </if>
+      <if test="returnMsg != null" >
+        return_msg,
+      </if>
+      <if test="gtmCreate != null" >
+        gtm_create,
+      </if>
+      <if test="gtmModified != null" >
+        gtm_modified,
+      </if>
+      <if test="extension != null" >
+        extension,
+      </if>
+      <if test="reqMsgId != null" >
+        req_msg_id,
+      </if>
+      <if test="reqInfo != null" >
+        req_info,
+      </if>
+      <if test="respInfo != null" >
+        resp_info,
+      </if>
+      <if test="callBackUrl != null" >
+        call_back_url,
+      </if>
+      <if test="callBackStatus != null" >
+        call_back_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="shopCode != null" >
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="outMerchantId != null" >
+        #{outMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="mybankOrderNo != null" >
+        #{mybankOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMsg != null" >
+        #{returnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="gtmCreate != null" >
+        #{gtmCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gtmModified != null" >
+        #{gtmModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extension != null" >
+        #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="reqMsgId != null" >
+        #{reqMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqInfo != null" >
+        #{reqInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="respInfo != null" >
+        #{respInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="callBackUrl != null" >
+        #{callBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="callBackStatus != null" >
+        #{callBackStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    update t_merchant_settle_flow
+    <set >
+      <if test="shopCode != null" >
+        shop_code = #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="outMerchantId != null" >
+        out_merchant_id = #{outMerchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="mybankOrderNo != null" >
+        mybank_order_no = #{mybankOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMsg != null" >
+        return_msg = #{returnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="gtmCreate != null" >
+        gtm_create = #{gtmCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gtmModified != null" >
+        gtm_modified = #{gtmModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extension != null" >
+        extension = #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="reqMsgId != null" >
+        req_msg_id = #{reqMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqInfo != null" >
+        req_info = #{reqInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="respInfo != null" >
+        resp_info = #{respInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="callBackUrl != null" >
+        call_back_url = #{callBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="callBackStatus != null" >
+        call_back_status = #{callBackStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    update t_merchant_settle_flow
+    set shop_code = #{shopCode,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      out_merchant_id = #{outMerchantId,jdbcType=VARCHAR},
+      mybank_order_no = #{mybankOrderNo,jdbcType=VARCHAR},
+      return_msg = #{returnMsg,jdbcType=VARCHAR},
+      gtm_create = #{gtmCreate,jdbcType=TIMESTAMP},
+      gtm_modified = #{gtmModified,jdbcType=TIMESTAMP},
+      extension = #{extension,jdbcType=VARCHAR},
+      req_msg_id = #{reqMsgId,jdbcType=VARCHAR},
+      req_info = #{reqInfo,jdbcType=LONGVARCHAR},
+      resp_info = #{respInfo,jdbcType=LONGVARCHAR},
+      call_back_url = #{callBackUrl,jdbcType=VARCHAR},
+      call_back_status = #{callBackStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.souche.bmgateway.core.domain.MerchantSettleFlow" >
+    update t_merchant_settle_flow
+    set shop_code = #{shopCode,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      out_merchant_id = #{outMerchantId,jdbcType=VARCHAR},
+      mybank_order_no = #{mybankOrderNo,jdbcType=VARCHAR},
+      return_msg = #{returnMsg,jdbcType=VARCHAR},
+      gtm_create = #{gtmCreate,jdbcType=TIMESTAMP},
+      gtm_modified = #{gtmModified,jdbcType=TIMESTAMP},
+      extension = #{extension,jdbcType=VARCHAR},
+      req_msg_id = #{reqMsgId,jdbcType=VARCHAR},
+      call_back_url = #{callBackUrl,jdbcType=VARCHAR},
+      call_back_status = #{callBackStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

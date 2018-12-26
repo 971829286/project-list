@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.souche</groupId>
+	<artifactId>bright-moon-gateway</artifactId>
+
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>bright-moon-gateway</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<!--  MyBatis Generator  -->
+		<!--  Java接口和实体类  -->
+		<targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+		<targetMapperPackage>com.souche.bmgateway.core.dao</targetMapperPackage>
+		<targetModelPackage>com.souche.bmgateway.core.domain</targetModelPackage>
+		<!--  XML生成路径  -->
+		<targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+		<targetXMLPackage>mapper</targetXMLPackage>
+		<mysql.version>5.1.31</mysql.version>
+		<bright-moon-gateway-api.version>1.0.2</bright-moon-gateway-api.version>
+
+		<java.version>1.8</java.version>
+		<project.encoding>utf-8</project.encoding>
+		<app.name>bright-moon-gateway</app.name>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		
+		<aspectjrt.version>1.8.6</aspectjrt.version>
+		
+		<!-- souche -->
+		<optimus.version>1.5.3</optimus.version>
+		<dubbo.version>2.6.6</dubbo.version>
+		<sso.client2.version>1.5.1</sso.client2.version>
+
+		<!-- 第三方 -->
+		<spring.version>4.3.2.RELEASE</spring.version>
+		<cglib.version>2.2.2</cglib.version>
+		<lombok.version>1.16.20</lombok.version>
+		<cglib.version>2.2.2</cglib.version>
+		<netfinworks.version>2.0.0</netfinworks.version>
+        <cxf.version>2.4.3</cxf.version>
+		<spring.redis.version>1.4.2.RELEASE</spring.redis.version>
+		<redis.version>2.6.2</redis.version>
+		<elastic-job.version>2.0.0-SOUCHE</elastic-job.version>
+        <umpay.version>4</umpay.version>
+        <coobird.version>0.4.8</coobird.version>
+
+		<tradeservice.version>2.0.0</tradeservice.version>
+		<pbs-service-facade.version>2.0.0</pbs-service-facade.version>
+		<netfinworks.payment.version>2.1.0</netfinworks.payment.version>
+		<pfs-service-payment.version>2.1.0</pfs-service-payment.version>
+		<netfinworks.cmf.version>2.0.0</netfinworks.cmf.version>
+		<netfinworks.cmf.common.version>2.0.0</netfinworks.cmf.common.version>
+		<netfinworks-mq.version>2.0.0</netfinworks-mq.version>
+
+		<!-- witness -->
+		<witness-SNAPSHOT.version>2.2-SNAPSHOT</witness-SNAPSHOT.version>
+		<dts-api.version>2.0.1-SNAPSHOT</dts-api.version>
+
+    </properties>
+
+	<profiles>
+		<profile>
+			<id>eclipse</id>
+			<properties>
+				<package.environment>eclipse</package.environment>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<filtering>true</filtering>
+						<directory>build/velocity</directory>
+						<targetPath>${basedir}/src/main/webapp/WEB-INF/velocity/system</targetPath>
+						<includes>
+							<include>*.vm</include>
+						</includes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>intelliJ</id>
+			<properties>
+				<package.environment>intelliJ</package.environment>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+		    <dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo-doc</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>com.souche</groupId>
+                <artifactId>optimus-remoting-monitor</artifactId>
+                <version>${optimus.version}</version>
+            </dependency>
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>optimus-core</artifactId>
+				<version>${optimus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>optimus-orm</artifactId>
+				<version>${optimus.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>optimus-mq</artifactId>
+				<version>${optimus.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>optimus-upload</artifactId>
+				<version>${optimus.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>optimus-cache</artifactId>
+				<version>${optimus.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>optimus-swagger</artifactId>
+				<version>${optimus.version}</version>
+			</dependency>
+
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<!-- 其他第三方工具 -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- netfinworks -->
+			<dependency>
+				<groupId>com.netfinworks.ma.service</groupId>
+				<artifactId>ma-service-facade</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.ues</groupId>
+				<artifactId>ues-client</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.fos</groupId>
+				<artifactId>fos-service-facade</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.voucher</groupId>
+				<artifactId>voucher-service-facade</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.payment.common</groupId>
+				<artifactId>payment-common-domain</artifactId>
+				<version>${netfinworks.payment.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.deposit</groupId>
+				<artifactId>deposit-service-facade</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.acs</groupId>
+				<artifactId>acs-service-facade</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.common</groupId>
+				<artifactId>netfinworks-common-lang</artifactId>
+				<version>${netfinworks.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.tradeservice</groupId>
+				<artifactId>tradeservice-service-facade</artifactId>
+				<version>${tradeservice.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>netfinworks-common-lang</artifactId>
+						<groupId>com.netfinworks.common</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.pbs</groupId>
+				<artifactId>pbs-service-facade</artifactId>
+				<version>${pbs-service-facade.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.pfs</groupId>
+				<artifactId>pfs-service-payment</artifactId>
+				<version>${pfs-service-payment.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.cmf.common</groupId>
+				<artifactId>cmf-common-core</artifactId>
+				<version>${netfinworks.cmf.common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.cmf.service</groupId>
+				<artifactId>cmf-service-facade</artifactId>
+				<version>${netfinworks.cmf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.mq</groupId>
+				<artifactId>netfinworks-mq-utils</artifactId>
+				<version>${netfinworks-mq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.mq</groupId>
+				<artifactId>netfinworks-mq</artifactId>
+				<version>${netfinworks-mq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.mq</groupId>
+				<artifactId>netfinworks-mq-jms</artifactId>
+				<version>${netfinworks-mq.version}</version>
+			</dependency>
+
+			<!-- elastic-job -->
+			<dependency>
+				<groupId>com.dangdang</groupId>
+				<artifactId>elastic-job-lite-core</artifactId>
+				<version>${elastic-job.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dangdang</groupId>
+				<artifactId>elastic-job-lite-spring</artifactId>
+				<version>${elastic-job.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context-support</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>com.souche.tfb</groupId>
+				<artifactId>fin-settle-api</artifactId>
+				<version>1.0.3-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jcraft</groupId>
+				<artifactId>jsch</artifactId>
+				<version>0.1.54</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sourceforge.javacsv</groupId>
+				<artifactId>javacsv</artifactId>
+				<version>2.0</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.apache.ant/ant -->
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant</artifactId>
+				<version>1.10.4</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-csv</artifactId>
+				<version>1.5</version>
+			</dependency>
+
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.souche</groupId>
+                <artifactId>bright-moon-gateway-api</artifactId>
+                <version>${bright-moon-gateway-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.souche</groupId>
+                <artifactId>bright-moon-gateway-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+			<!--redis-->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${spring.redis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${redis.version}</version>
+			</dependency>
+			
+			<!-- aspectj -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectjrt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectjrt.version}</version>
+			</dependency>
+
+            <!-- umpay -->
+            <dependency>
+                <groupId>umpay</groupId>
+                <artifactId>umpay.api</artifactId>
+                <version>${umpay.version}</version>
+            </dependency>
+
+			<!-- common -->
+			<dependency>
+				<groupId>net.coobird</groupId>
+				<artifactId>thumbnailator</artifactId>
+				<version>${coobird.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.souche</groupId>
+				<artifactId>witness-mq-service-api</artifactId>
+				<version>${witness-SNAPSHOT.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring-core</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.netfinworks.dts</groupId>
+				<artifactId>dts-api</artifactId>
+				<version>${dts-api.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Local Nexus Repository</name>
+			<url>https://repo.souche-inc.com/repository/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>https://repo.souche-inc.com/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>souche</id>
+			<name>artifactory</name>
+			<url>https://repo.souche-inc.com/repository/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>souche</id>
+			<name>artifactory</name>
+			<url>https://repo.souche-inc.com/repository/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>interval:2</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+  	<modules>
+		<module>web</module>
+		<module>api</module>
+		<module>core</module>
+  	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+				<version>2.19</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

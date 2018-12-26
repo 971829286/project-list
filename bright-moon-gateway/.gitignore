@@ -1,0 +1,12 @@
+target/
+*.iml
+.idea*
+target/
+.project
+.setting
+.classpath
+catalina.base_IS_UNDEFINED/
+APP_HOME_IS_UNDEFINED/
+/.idea/
+/bright-moon-gateway.ipr
+/bright-moon-gateway.iws
